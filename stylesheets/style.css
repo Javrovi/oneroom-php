@@ -1,0 +1,272 @@
+/* reset browser styles */
+html, body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, pre, code, address, variable, form, fieldset, blockquote {
+ padding: 0;
+ margin: 0;
+ font-size: 100%;
+ font-weight: normal;
+}
+
+ol { 
+  margin-left: 1.4em; 
+  list-style: decimal; 
+}
+
+ul { 
+  margin-left: 1.4em; 
+  list-style:square; 
+}
+
+img {
+  border: 0;
+}
+/* end reset browser styles */
+
+/* background color */
+body {
+  background-color: #0B486B;  
+}
+
+/* links */
+a {
+  text-decoration: none;
+}
+
+/* for sticky footer */
+html, body { height: 100%; }
+body > #main { height: auto; min-height: 95%; } 
+
+/* major divisions */
+#main {
+  background-color: #E0E4CC;
+  width: 700px;
+  margin: 0 auto;
+  font-size: medium;
+  padding-bottom: 3em;
+}
+
+#acct_nav {
+  float: right;
+  background-color: #0B486B;
+  color: #FFFFFF;
+  font-size: 0.8em;
+  padding: 2px 5px 2px 5px;
+  margin: 0px 10px 0px 5px;
+}
+
+#acct_nav a {
+  color: #FFFFFF;
+  font-family: Georgia, "Palatino Linotype", Palatino, Times, "Times New Roman", serif;
+}
+
+#app_name {
+  float: left;
+  color: #F38630;
+  margin: 5px 15px 5px 5px;
+  padding: 2px 5px 2px 5px;
+}
+
+#app_name a {
+  color: #F38630;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+#course_nav {
+  color: #F38630;
+  margin: 0px 5px 0px 5px;
+  padding: 12px 5px 2px 5px;
+}
+
+#course_nav a {
+  color: #69D2E7;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 1.0em;
+}
+
+#course_nav a:hover {
+  color: #0B486B;
+}
+
+#nav {
+  margin-bottom: 20px;
+}
+
+#content {
+  margin: 0px 25px 15px 25px;
+}
+
+#content-heading {
+  margin-bottom: 5px;
+  padding: 10px 10px 10px 10px;
+  line-height: 0.9;
+  border-top-style: dotted;
+  border-top-color: #0B486B;
+  border-bottom-style: dotted;
+  border-bottom-color: #0B486B;
+}
+
+#content-heading h1 {
+  color: #FA6900;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+#content-heading h1 .paren-link {
+  font-size: 0.8em;
+  color: #F38630;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+}
+
+#content-heading h1 .paren {
+  font-size: 0.8em;
+  color: #0B486B;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+}
+
+#content-heading h2 a {
+  font-size: 1.2em;
+  color: #F38630;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+}
+
+#content-body {
+  line-height: 1.2;
+  color: #031634;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  padding: 5px 15px 5px 15px;
+}
+
+#content-body h3 {
+  color: #FA6900;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: 1.4em;
+  font-style: italic;
+  margin-top: 20px;
+  padding: 2px 2px 2px 2px;
+}
+
+#content-body h4 {
+  color: #FA6900;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-top: 10px;
+  padding: 2px 2px 2px 2px;
+}
+
+#content-body h4 a.paren-link {
+  font-size: 0.8em;
+  color: #F38630;
+}
+
+#content-body p {
+  font-size: 1.2em;
+}
+
+#content-body p a {
+  color: #F38630;  
+}
+
+#content-body ul li {
+  font-size: 1.2em;
+}
+
+#content-body ul li a {
+  color: #031634;
+}
+
+#content-body ul li a:hover {
+  color: #F38630;  
+}
+
+#content-body ul li a.paren-link {
+  color: #F38630;
+  font-size: 0.8em;
+}
+
+#content-body ul.small_list li {
+  font-size: 1.0em;
+}
+
+#cancel_confirm {
+  float: right;
+}
+
+#assignment_table, #grades_table {
+  border-collapse: collapse;
+}
+
+#assignment_table td, #assignment_table th, #grades_table td, #grades_table th {
+  border: 2px solid #0B486B;
+  padding: 2px 5px 2px 5px;
+}
+
+#assignment_table th, #grades_table th {
+  text-transform: uppercase;
+  padding-top: 5px;
+  padding-bottom: 4px;
+  background-color: #F38630; 
+  color: #0B486B;
+}
+
+#assignment_table td a, #grades_table td a {
+  color: #F38630;
+}
+
+.course_grade {
+  color: #69D2E7;
+}
+
+.code {
+  color: #0B486B;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.italic {
+  font-style: italic;
+}
+
+#footer {
+  width: 250px;
+  margin: auto;
+  clear: both;
+  color: #0B486B;
+  font-family: Georgia, "Palatino Linotype", Palatino, Times, "Times New Roman", serif;
+  position: relative;
+  z-index: 10;
+  height: 1em;
+  margin-top: -3em;
+}
+
+#footer a {
+  color: #0B486B;
+}
+
+/* forms */
+form label {
+  float: left;
+  width: 200px;
+  margin-right: 10px;
+  text-align: right;
+  color: #0B486B;
+  font-size: 0.8em;
+  text-transform: lowercase;
+  padding-top: 4px;
+}
+
+#submit {
+  margin-left: 210px;
+  margin-top: 5px;
+}
+
+/* DEBUG */
+#debug {
+  /* uncomment the following line to not display debug text */
+  display : none;
+}
