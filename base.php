@@ -13,38 +13,43 @@
     
   <body>
     <div id="main">
-        <div id="acct_nav">
-          <?php if ($authenticated) { ?>
-            <a href="/oneroom/accounts/manage/">my account</a> |
-            <a href="/oneroom/accounts/logout/">logout</a>
-          <?php } else { ?>
-            <a href="/oneroom/accounts/login/">login</a> |
-            <a href="/oneroom/accounts/register/">register</a>
-          <?php } ?>
-        </div>
+      <!-- Account navigation menu at the top right -->
+      <div id="acct_nav">
+        <?php if ($authenticated) { ?>
+          <a href="acct_manage.php">my account</a> |
+          <a href="logout.php">logout</a>
+        <?php } else { ?>
+          <a href="login.php">login</a> |
+          <a href="register.php">register</a>
+        <?php } ?>
+      </div>
         
+      <!-- Main navigation menu -->
       <div id="nav">
         <div id="app_name">
           <p>
-            <a href="/oneroom/gradetracker/">OneRoom</a>
+            <a href="home.php">OneRoom</a>
           </p>
         </div>
         
         <div id="course_nav">
-          <a href="/oneroom/gradetracker/">home</a> |
+          <a href="home.php">home</a> |
           <?php if ($authenticated) { ?>
-            <a href="/oneroom/gradetracker/courses/all/">all courses</a> |
-            <a href="/oneroom/gradetracker/courses/">my courses</a> |
-            <a href="/oneroom/gradetracker/search/">search courses</a>
+            <a href="allcourses.php">all courses</a> |
+            <a href="usercourses.php">my courses</a> |
+            <a href="search.php">search courses</a>
           <?php } ?>
         </div>
       </div>
       
+      <!-- Main content -->
       <div id="content">
+        <!-- Content heading -->
         <div id="content-heading">
           <?php require_once($content_heading); ?>
         </div>
         
+        <!-- Content body -->
         <div id="content-body">
           <?php require_once($content_body); ?>
         </div>
@@ -61,8 +66,8 @@
     
     <div id="footer">
       <p>
-        <a href="/oneroom/gradetracker/about/">About</a> |
-        <a href="/oneroom/gradetracker/help/">Help</a> |
+        <a href="about.html">About</a> |
+        <a href="help.html">Help</a> |
         &copy; 2011 Yiping Liao
       </p>
     </div>
