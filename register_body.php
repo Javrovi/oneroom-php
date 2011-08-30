@@ -1,39 +1,67 @@
 <?php
-/*
   if (isset($_POST['submit'])) {
+    // Connect to DB 
+    $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or
+          die('Cannot connect to databse.');
+          
     // Grab the profile data from the POST
+    $first_name = mysqli_real_escape_string($dbc, trim($_POST['first_name']));
+    $last_name = mysqli_real_escape_string($dbc, trim($_POST['last_name']));
     $username = mysqli_real_escape_string($dbc, trim($_POST['username']));
+    $email = mysqli_real_escape_string($dbc, trim($_POST['email']));
+    $usertype = mysqli_real_escape_string($dbc, trim($_POST['usertype']));
     $password1 = mysqli_real_escape_string($dbc, trim($_POST['password1']));
     $password2 = mysqli_real_escape_string($dbc, trim($_POST['password2']));
+    
+    // For DEBUG: echo all the values received
+    // echo($first_name . ' ' . $last_name . ' ' . $username . ' ' . $email);
+    // echo($usertype . ' ' . $password1 . ' ' . $password2);
 
-    if (!empty($username) && !empty($password1) && !empty($password2) && ($password1 == $password2)) {
+    
+    if (!empty($first_name) && !empty($last_name) && !empty($username) &&
+        !empty($email) && !empty($usertype) &&
+        !empty($password1) && !empty($password2) &&
+        ($password1 == $password2)) {
       // Make sure someone isn't already registered using this username
-      $query = "SELECT * FROM mismatch_user WHERE username = '$username'";
+      $query = "SELECT * FROM oneroom_users WHERE username = '$username'";
       $data = mysqli_query($dbc, $query);
       if (mysqli_num_rows($data) == 0) {
         // The username is unique, so insert the data into the database
-        $query = "INSERT INTO mismatch_user (username, password, join_date) VALUES ('$username', SHA('$password1'), NOW())";
-        mysqli_query($dbc, $query);
+        $query = "INSERT INTO oneroom_users
+                  (first_name, last_name, username, email, user_type, password)
+                  VALUES
+                  ('$first_name', '$last_name', '$username', '$email',
+                   '$usertype', SHA('$password1'))";
+                   
+        // For DEBUG: echo query string
+        // echo $query;
+        
+        $result = mysqli_query($dbc, $query)
+                    or die('Error querying database: ' . mysqli_error($dbc));
 
         // Confirm success with the user
-        echo '<p>Your new account has been successfully created. You\'re now ready to <a href="login.php">log in</a>.</p>';
+        echo '<p>Your registration with OneRoom was successful. ';
+        echo 'Now you can access <a href="usercourses.php">your courses </a>';
+        echo 'or go back to the <a href="home.php">Home</a> page.</p>';
 
         mysqli_close($dbc);
         exit();
       }
       else {
         // An account already exists for this username, so display an error message
-        echo '<p class="error">An account already exists for this username. Please use a different address.</p>';
+        echo '<p class="error">Username is already taken.</p>';
         $username = "";
       }
     }
     else {
       echo '<p class="error">You must enter all of the sign-up data, including the desired password twice.</p>';
     }
+    mysqli_close($dbc);
   }
 
-  mysqli_close($dbc);*/
+
 ?>
+
   <!-- User Registration Form -->
   <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
     <!-- First Name -->

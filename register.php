@@ -2,10 +2,8 @@
   // Set page title
   $page_title = 'User Registration';
   
-  // Connect to the database
+  // Set up any globals
   require_once('connectvars.php');
-  $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or
-          die('Cannot connect to databse.');
   
   // Set main content heading file
   $content_heading = 'register_heading.php';
