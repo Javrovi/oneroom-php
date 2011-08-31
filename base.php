@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <?php
-    // Session management
-    session_start();
+  // Session management
+  session_start();
 ?>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,17 +11,12 @@
     <title>OneRoom Grade Tracker | <?php echo $page_title; ?></title>
     <link rel="stylesheet" href="stylesheets/style.css" type="text/css" />
   </head>
-  
-  <?php
-    // Has the user been authenticated?
-    $authenticated = isset($_SESSION['user_id']);
-  ?>
-    
+
   <body>
     <div id="main">
       <!-- Account navigation menu at the top right -->
       <div id="acct_nav">
-        <?php if ($authenticated) { ?>
+        <?php if (isset($_SESSION['user_id'])) { ?>
           <a href="acct_manage.php">my account</a> |
           <a href="logout.php">logout</a>
         <?php } else { ?>
@@ -40,7 +35,7 @@
         
         <div id="course_nav">
           <a href="home.php">home</a> |
-          <?php if ($authenticated) { ?>
+          <?php if (isset($_SESSION['user_id'])) { ?>
             <a href="allcourses.php">all courses</a> |
             <a href="usercourses.php">my courses</a> |
             <a href="search.php">search courses</a>
