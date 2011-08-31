@@ -16,11 +16,6 @@
     $password1 = mysqli_real_escape_string($dbc, trim($_POST['password1']));
     $password2 = mysqli_real_escape_string($dbc, trim($_POST['password2']));
     
-    // For DEBUG: echo all the values received
-    // echo($first_name . ' ' . $last_name . ' ' . $username . ' ' . $email);
-    // echo($usertype . ' ' . $password1 . ' ' . $password2);
-
-    
     if (!empty($first_name) && !empty($last_name) && !empty($username) &&
         !empty($email) && !empty($usertype) &&
         !empty($password1) && !empty($password2) &&
@@ -35,10 +30,7 @@
                   VALUES
                   ('$first_name', '$last_name', '$username', '$email',
                    '$usertype', SHA('$password1'))";
-                   
-        // For DEBUG: echo query string
-        // echo $query;
-        
+                         
         $result = mysqli_query($dbc, $query)
                     or die('Error querying database: ' . mysqli_error($dbc));
 
@@ -103,5 +95,3 @@
     <!-- Submission -->
     <input type="submit" value="register" id="submit" name="submit" />
   </form>
-</body> 
-</html>
