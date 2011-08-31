@@ -1,4 +1,7 @@
 <?php
+  // DB connection globals
+  require_once('connectvars.php');
+  
   if (isset($_POST['submit'])) {
     // Connect to DB 
     $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or

@@ -1,18 +1,18 @@
 <?php if ($authenticated) { ?>
     <p>
-        Click <a href="/oneroom/gradetracker/courses/">here</a>
+        Click <a href="usercourses.php">here</a>
         to access your courses.
     </p>
     <p>
         To see all courses, click on the
-        <a href="/oneroom/gradetracker/courses/all/">course index</a>.
+        <a href="allcourses.php">course index</a>.
     </p>
 <?php } else { ?>
     <p>
         Welcome anonymous user!
-        You need to <a href="/oneroom/accounts/login/">login</a>
+        You need to <a href="login.php">login</a>
         before you can access your courses.
-        (New users: please click <a href="/oneroom/accounts/register/">here</a>
+        (New users: please click <a href="register.php">here</a>
          to register)
     </p>
 <?php } ?>
