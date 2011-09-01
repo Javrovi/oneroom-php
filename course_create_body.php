@@ -1,12 +1,6 @@
 <?php
-  // DB connection globals
-  require_once('connectvars.php');
-  
-  // Utility functions
-  require_once('utils.php');
-
   // Only teachers can create courses  
-  if (is_teacher($_SESSION['user_id'])) {
+  if ($is_teacher) {
     if (isset($_POST['submit'])) {
       // Connect to DB 
       $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or
@@ -34,7 +28,6 @@
         // Grab the new course id and insert a new row into the
         // 'courses_teachers' table
         $course_id = mysqli_insert_id($dbc);
-        $user_id = $_SESSION['user_id'];
         $query = "INSERT INTO courses_teachers
                   (teacher_id, course_id)
                   VALUES
@@ -88,7 +81,5 @@
 
 <?php } else {
   //Redirect to a page informing the user that he doesn't have the permissions.
-  $noperm_url = 'http://' . $_SERVER['HTTP_HOST'] .
-                dirname($_SERVER['PHP_SELF']) . '/nopermissions.php';
-  header('Location: ' . $noperm_url);
+  redirect('/nopermissions.php');
 }

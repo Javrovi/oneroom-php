@@ -1,4 +1,4 @@
-<?php if (isset($_SESSION['user_id'])) { ?>
+<?php if ($logged_in) { ?>
   <p>
     Click <a href="usercourses.php">here</a> to access your courses.
   </p>

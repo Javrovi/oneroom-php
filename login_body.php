@@ -1,12 +1,9 @@
 <?php
-  // DB connection globals
-  require_once('connectvars.php');
-
   // Clear the error message
   $error_msg = "";
 
   // If the user isn't logged in, try to log them in
-  if (!isset($_SESSION['user_id'])) {
+  if (!$logged_in) {
     if (isset($_POST['submit'])) {
       // Connect to the database
       $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -29,9 +26,7 @@
           $_SESSION['username'] = $row['username'];
           
           // Redirect
-          $home_url = 'http://' . $_SERVER['HTTP_HOST'] .
-                      dirname($_SERVER['PHP_SELF']) . '/home.php';
-          header('Location: ' . $home_url);
+          redirect('home.php');
         }
         else {
           // The username/password are incorrect so set an error message
@@ -63,8 +58,8 @@
 </form>
 <br />
 <p>
-    If you are not yet a registered user, click <a href="register.php">here</a>
-    to register.
+  If you are not yet a registered user, click <a href="register.php">here</a>
+  to register.
 </p>
 
 <?php

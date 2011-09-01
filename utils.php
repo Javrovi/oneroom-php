@@ -1,10 +1,9 @@
 <?php
-  // is_teacher() returns true if the user with $user_id is a teacher
-  // and false otherwise.
+  /*
+   * is_teacher() returns true if the user with $user_id is a teacher
+   * and false otherwise.
+   */
   function is_teacher($user_id) {
-    // DB connection globals
-    require_once('connectvars.php');
-    
     $is_teacher = false;
     if (isset($_SESSION['user_id'])) {
       $user_id = $_SESSION['user_id'];
@@ -23,4 +22,14 @@
     }
     mysqli_close($dbc);
     return $is_teacher;
+  }
+  
+  /*
+   * redirect() redirects to the script name in $script_name
+   */
+  function redirect($script_name) {
+    $redirect_url = 'http://' . $_SERVER['HTTP_HOST'] .
+                    dirname($_SERVER['PHP_SELF']) . '/' .
+                    $script_name;
+    header('Location: ' . $redirect_url);
   }

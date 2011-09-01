@@ -1,7 +1,4 @@
-<?php
-  // DB connection globals
-  require_once('connectvars.php');
-  
+<?php 
   if (isset($_POST['submit'])) {
     // Connect to DB 
     $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or
@@ -34,13 +31,15 @@
         $result = mysqli_query($dbc, $query)
                     or die('Error querying database: ' . mysqli_error($dbc));
 
-        // Confirm success with the user
-        echo '<p>Your registration with OneRoom was successful. ';
-        echo 'Now you can access <a href="usercourses.php">your courses </a>';
-        echo 'or go back to the <a href="home.php">Home</a> page.</p>';
-
+        // Log in the newly-registered user
+        $_SESSION['user_id'] = mysqli_insert_id($dbc);
+        $_SESSION['username'] = $username;
+        
+        // Close DB connection
         mysqli_close($dbc);
-        exit();
+        
+        // Redirect to 'registration successful' page
+        redirect('reg_success.php');
       }
       else {
         // An account already exists for this username, so display an error message

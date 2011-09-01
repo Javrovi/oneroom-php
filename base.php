@@ -1,8 +1,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <?php
+  // DB connection globals
+  require_once('connectvars.php');
+  
+  // Utility functions
+  require_once('utils.php');
+
   // Session management
   session_start();
+  
+  /*
+    Set up the variables that are frequently used across scripts
+     ------------------------------------------------------------
+    $logged_in: true if a user is logged in; false otherwise
+    $user_id: id of the logged-in user
+    $username: username of the logged-in user
+    $is_teacher: true if the logged-in user is a teacher; false otherwise
+  */
+  $logged_in = isset($_SESSION['user_id']);
+  if ($logged_in) {
+    $user_id = $_SESSION['user_id'];
+    $username = $_SESSION['user_name'];
+    $is_teacher = is_teacher($user_id);
+  }
 ?>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -16,7 +37,7 @@
     <div id="main">
       <!-- Account navigation menu at the top right -->
       <div id="acct_nav">
-        <?php if (isset($_SESSION['user_id'])) { ?>
+        <?php if ($logged_in) { ?>
           <a href="acct_manage.php">my account</a> |
           <a href="logout.php">logout</a>
         <?php } else { ?>
@@ -35,7 +56,7 @@
         
         <div id="course_nav">
           <a href="home.php">home</a> |
-          <?php if (isset($_SESSION['user_id'])) { ?>
+          <?php if ($logged_in) { ?>
             <a href="allcourses.php">all courses</a> |
             <a href="usercourses.php">my courses</a> |
             <a href="search.php">search courses</a>
