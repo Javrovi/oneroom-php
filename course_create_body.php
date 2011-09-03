@@ -2,10 +2,7 @@
   // Only teachers can create courses  
   if ($is_teacher) {
     if (isset($_POST['submit'])) {
-      // Connect to DB 
-      $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or
-            die('Cannot connect to databse.');
-            
+
       // Grab the profile data from the POST
       $name = mysqli_real_escape_string($dbc, trim($_POST['name']));
       $year = mysqli_real_escape_string($dbc, trim($_POST['year']));
@@ -40,14 +37,10 @@
         echo '<p>You have successfully created ';
         echo "<a href=\"course_detail.php?course_id=$course_id\">";
         echo "$name, $semester $year</a>.";
-
-        mysqli_close($dbc);
-        exit();
       }
       else {
         echo '<p class="error">You must enter all of the sign-up data, including the desired password twice.</p>';
       }
-      mysqli_close($dbc);
     } 
   ?>
   

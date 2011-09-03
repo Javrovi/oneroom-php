@@ -1,9 +1,5 @@
 <?php 
   if (isset($_POST['submit'])) {
-    // Connect to DB 
-    $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or
-          die('Cannot connect to databse.');
-          
     // Grab the profile data from the POST
     $first_name = mysqli_real_escape_string($dbc, trim($_POST['first_name']));
     $last_name = mysqli_real_escape_string($dbc, trim($_POST['last_name']));
@@ -34,10 +30,7 @@
         // Log in the newly-registered user
         $_SESSION['user_id'] = mysqli_insert_id($dbc);
         $_SESSION['username'] = $username;
-        
-        // Close DB connection
-        mysqli_close($dbc);
-        
+   
         // Redirect to 'registration successful' page
         redirect('reg_success.php');
       }
@@ -50,7 +43,6 @@
     else {
       echo '<p class="error">You must enter all of the sign-up data, including the desired password twice.</p>';
     }
-    mysqli_close($dbc);
   }
 
 

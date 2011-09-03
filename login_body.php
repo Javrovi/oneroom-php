@@ -5,9 +5,6 @@
   // If the user isn't logged in, try to log them in
   if (!$logged_in) {
     if (isset($_POST['submit'])) {
-      // Connect to the database
-      $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-
       // Grab the user-entered log-in data
       $username = mysqli_real_escape_string($dbc, trim($_POST['username']));
       $password = mysqli_real_escape_string($dbc, trim($_POST['password']));

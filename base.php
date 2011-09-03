@@ -1,12 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <?php
-  // DB connection globals
+  // DB connection
   require_once('connectvars.php');
-  
+  $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or
+          die("Cannot connect to database.");
+   
   // Utility functions
   require_once('utils.php');
-
+ 
   // Session management
   session_start();
   
@@ -22,7 +24,8 @@
   if ($logged_in) {
     $user_id = $_SESSION['user_id'];
     $username = $_SESSION['user_name'];
-    $is_teacher = is_teacher($user_id);
+
+    $is_teacher = is_teacher($dbc, $user_id);
   }
 ?>
 
@@ -73,7 +76,10 @@
         
         <!-- Content body -->
         <div id="content-body">
-          <?php require_once($content_body); ?>
+          <?php
+            require_once($content_body);
+            mysqli_close($dbc);
+          ?>
         </div>
       </div>
       
