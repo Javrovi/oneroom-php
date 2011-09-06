@@ -1,7 +1,7 @@
 <?php
   // Only logged in users can see their personal courses
   if ($logged_in) {  
-    $user_full_name = get_user_full_name($user_id);
+    $user_full_name = get_user_full_name($dbc, $user_id);
     $first_name = $user_full_name['first_name'];
     $last_name = $user_full_name['last_name'];
     

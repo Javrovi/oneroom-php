@@ -64,8 +64,7 @@
    *                 $first_name = $user_full_name['first_name'];
    *                 $last_name = $user_full_name['last_name'];
    */
-  function get_user_full_name($user_id) {
-    global $dbc;
+  function get_user_full_name($dbc, $user_id) {
     // Get first name and last name from the database
     $query = "SELECT first_name, last_name FROM oneroom_users WHERE
               id = '$user_id'";

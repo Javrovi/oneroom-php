@@ -8,7 +8,7 @@
     $query = "SELECT * FROM courses_teachers WHERE
               teacher_id = '$user_id' AND course_id = '$course_id'";
   } else {
-    $query = "SELECT course_id FROM courses_students WHERE
+    $query = "SELECT * FROM courses_students WHERE
               student_id = '$user_id' AND course_id = '$course_id'";
   }
   $result = mysqli_query($dbc, $query)
@@ -19,7 +19,7 @@
     // user id
     
     // Get user's full name and course's full name
-    $user_full_name = get_user_full_name($user_id);
+    $user_full_name = get_user_full_name($dbc, $user_id);
     $first_name = $user_full_name['first_name'];
     $last_name = $user_full_name['last_name'];
     
@@ -38,7 +38,7 @@
   <div id="cancel_confirm">
      <p>
       <a href="#">Cancel</a> |
-      <a href="course_remove_user_confirmed.php">Confirm</a>
+      <a href="course_remove_user_success.php">Confirm</a>
     </p>
   </div>
   <?php
