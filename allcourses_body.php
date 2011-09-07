@@ -18,19 +18,22 @@
       $name = $row['name'];
       $semester = $row['semester'];
       $year = $row['year'];
-     
+      $course_id = $row['course_id'];
+      
       // Display course info 
       echo '<li>';
       echo $name . ', ' . $semester . ' ' . $year;
         
       // If user is part of the course, display link to course details page
-      if (in_array($row['course_id'], $user_course_ids)) {
+      if (in_array($course_id, $user_course_ids)) {
         echo '<a class="paren-link" href="#">';
         echo ' (course web page)</a>';
         echo '</li>';
       } else {
-        // display link to add user to course
-        echo '<a class="paren-link" href="#">';
+        // display link to add user to course, passing course id and user
+        // id as GET parameters
+        echo '<a class="paren-link" href="course_add_user.php?course_id=' .
+             $course_id . '&user_id=' . $user_id . '">';
         if ($is_teacher) {
           echo ' (teach this course)';
         } else {

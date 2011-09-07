@@ -1,0 +1,14 @@
+<?php
+  // Set page title
+  $page_title = 'Invalid Course Passcode';
+  
+  // Set main content heading file
+  $content_heading = 'course_add_teacher_bad_passcode_heading.php';
+  
+  // Set main content body file
+  $content_body = 'course_add_teacher_bad_passcode_body.php';
+  
+  // Render with 'base.php' template
+  require_once('base.php');
+?>
+
