@@ -26,7 +26,8 @@
         
       // If user is part of the course, display link to course details page
       if (in_array($course_id, $user_course_ids)) {
-        echo '<a class="paren-link" href="#">';
+        echo '<a class="paren-link" ';
+        echo "href=\"course_page.php?course_id=$course_id\">";
         echo ' (course web page)</a>';
         echo '</li>';
       } else {

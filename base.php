@@ -1,34 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<?php
-  // DB connection
-  require_once('connectvars.php');
-  $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or
-          die("Cannot connect to database.");
-   
-  // Utility functions
-  require_once('utils.php');
- 
-  // Session management
-  session_start();
-  
-  /*
-    Set up the variables that are frequently used across scripts
-     ------------------------------------------------------------
-    $logged_in: true if a user is logged in; false otherwise
-    $user_id: id of the logged-in user
-    $username: username of the logged-in user
-    $is_teacher: true if the logged-in user is a teacher; false otherwise
-  */
-  $logged_in = isset($_SESSION['user_id']);
-  if ($logged_in) {
-    $user_id = $_SESSION['user_id'];
-    $username = $_SESSION['user_name'];
-
-    $is_teacher = is_teacher($dbc, $user_id);
-  }
-?>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -78,7 +49,6 @@
         <div id="content-body">
           <?php
             require_once($content_body);
-            mysqli_close($dbc);
           ?>
         </div>
       </div>

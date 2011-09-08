@@ -24,7 +24,7 @@
 
 <div id="cancel_confirm">
    <p>
-    <a href="#">Cancel</a> |
+    <a href="allcourses.php">Cancel</a> |
     <a href="<?php if ($is_teacher) {
                       echo 'course_add_teacher.php';
                     } else {

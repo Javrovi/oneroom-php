@@ -1,4 +1,7 @@
 <?php
+  // Initialize page
+  require_once('init_page.php');
+
   // Set page title
   $page_title = 'Registration Successful';
   
@@ -10,5 +13,8 @@
   
   // Render with 'base.php' template
   require_once('base.php');
+  
+  // Close page
+  require_once('close_page.php');
 ?>
 

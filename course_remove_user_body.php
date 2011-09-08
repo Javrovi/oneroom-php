@@ -37,7 +37,7 @@
   ?>  
   <div id="cancel_confirm">
      <p>
-      <a href="#">Cancel</a> |
+      <a href="course_page.php?course_id=<?php echo $course_id; ?>">Cancel</a> |
       <a href="course_remove_user_success.php">Confirm</a>
     </p>
   </div>
