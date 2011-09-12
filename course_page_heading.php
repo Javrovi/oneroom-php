@@ -1,5 +1,4 @@
 <?php
-  // Only logged in users can remove themselves from courses
   if ($logged_in) {
     echo "<h1>$name, $semester $year</h1>";
     if ($is_teacher) {

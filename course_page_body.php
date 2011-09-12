@@ -1,3 +1,7 @@
+<?php
+  // Set course id in $_SESSION for follow-up scripts
+  $_SESSION['course_id'] = $course_id;
+?>
 
 <!-- List Teachers -->
 <h4>Teacher(s):</h4>
@@ -41,7 +45,14 @@
 ?>
 
 <!-- List Assignments -->
-<h4>Assignments and Tests:</h4>
+<h4>
+  Assignments and Tests:
+  <?php if ($is_teacher) {
+    ?>
+    <a class="paren-link"
+       href="assignment_create.php">(add a new assignment/test)</a>
+  <?php }?>
+</h4>
 <?php
   $query = "SELECT name, assignment_id
             FROM assignments 

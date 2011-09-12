@@ -1,7 +1,7 @@
 <?php
-  // Only teachers can delete courses
+  // Only logged in teachers can edit courses
   if ($is_teacher) {
-    echo '<h1>Course Successfuly Deleted</h1>';
+    echo '<h1>Create a New Assignment</h1>';
   } else {
   // Redirect to a page informing the user that he doesn't have the permissions.
   redirect('/nopermissions.php');
