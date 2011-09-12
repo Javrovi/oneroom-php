@@ -64,7 +64,9 @@
     $name = $row['name'];
     echo '<li>' . $name;
     if ($is_teacher) {
-      echo '<a class="paren-link" href="#"> (edit)</a>';
+      $assignment_id = $row['assignment_id'];
+      echo "<a class=\"paren-link\" href=\"assignment_edit.php?assignment_id=$assignment_id\">";
+      echo " (edit)</a>";
       echo '<a class="paren-link" href="#"> (delete)</a>';
     }
   }
