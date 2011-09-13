@@ -62,7 +62,9 @@
   echo '<ul class="small_list">';
   while ($row = mysqli_fetch_array($result)) {
     $name = $row['name'];
-    echo '<li>' . $name;
+    $assignment_id = $row['assignment_id'];
+    echo '<li>';
+    echo "<a href=\"assignment_page.php?assignment_id=$assignment_id\">$name</a>";
     if ($is_teacher) {
       $assignment_id = $row['assignment_id'];
       echo "<a class=\"paren-link\" href=\"assignment_edit.php?assignment_id=$assignment_id\">";
