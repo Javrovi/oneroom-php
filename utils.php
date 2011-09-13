@@ -116,3 +116,97 @@
     
     return $course_full_name;
   }
+  
+  /*
+   * get_assignment_info() returns the name, due date, and associated course id
+   * of the assignment whose id, $assignment_id, is passed in.  An associative
+   * array is returned.  The keys in the returned array are 'name', 'due_date',
+   * 'due_date_string', and 'course_id'. The 'due_date' field in the associated
+   * array is itself an associative array.  The keys in that array are 'month'
+   * (e.g., 'Jan.'), 'day' (e.g., '15'), and 'year' (e.g., '2011'). The
+   * 'due_date_string' field is a string representing the due date in the
+   * MM/DD/YYYY format (e.g., '1/15/2011').
+   *
+   *  Example usage: $assignment_info = get_assignment_info($dbc, 3);
+   *                 $name = $assignment_info['name'];
+   *                 $due_date = $assignment_info['due_date'];
+   *                 $course_id = $assignment_info['course_id'];
+   *                 $due_date_month = $due_date['month'];
+   *                 $due_date_day = $due_date['day'];
+   *                 $due_date_year = $due_date['year'];
+   */
+  function get_assignment_info($dbc, $assignment_id) {
+    $query = "SELECT name, due_date, course_id FROM assignments WHERE
+              assignment_id = '$assignment_id'";
+    $result = mysqli_query($dbc, $query)
+              or die('Error querying database: ' . mysqli_error($dbc));
+    if (mysqli_num_rows($result) == 1) {
+        // Success if only one row is returned
+        $row = mysqli_fetch_array($result);
+    } else {
+      // Something went wrong if the number of rows returned is not 1
+      die('Error querying database:
+           no course with this id or more than one course with the same id.');
+    }
+    
+    $assignment_info = array();
+    $assignment_info['name'] = $row['name'];
+    $assignment_info['course_id'] = $row['course_id'];
+    
+    // Process the due date retrieved from the database, which is in the
+    // YYYY-MM-DD format, into an associative array, $due_date, where
+    // $due_date['month'] contains a string representing the month
+    // (e.g., 'Jan.'), $due_date['day'] contains a string representing the day,
+    // (e.g., '15'), and $due_day['year'] contains a string representing the
+    // year (e.g., '2011').
+    $due_date = array();
+    $due_date_exploded = explode('-', $row['due_date']);
+    $assignment_info['due_date_string'] = $due_date_exploded[1] . '/' .
+                                          $due_date_exploded[2] . '/' .
+                                          $due_date_exploded[0];
+    $due_date['year'] = $due_date_exploded[0];
+    $due_date['day'] = $due_date_exploded[2];
+    $month = $due_date_exploded[1];
+    
+    switch ($month) {
+      case 1:
+        $due_date['month'] = 'Jan.';
+        break;
+      case 2:
+        $due_date['month'] = 'Feb.';
+        break;
+      case 3:
+        $due_date['month'] = 'Mar.';
+        break;
+      case 4:
+        $due_date['month'] = 'Apr.';
+        break;
+      case 5:
+        $due_date['month'] = 'May';
+        break;
+      case 6:
+        $due_date['month'] = 'Jun.';
+        break;
+      case 7:
+        $due_date['month'] = 'Jul.';
+        break;
+      case 8:
+        $due_date['month'] = 'Aug.';
+        break;
+      case 9:
+        $due_date['month'] = 'Sep.';
+        break;
+      case 10:
+        $due_date['month'] = 'Oct.';
+        break;
+      case 11:
+        $due_date['month'] = 'Nov.';
+        break;
+      case 2:
+        $due_date['month'] = 'Dec.';
+        break;
+    }
+    $assignment_info['due_date'] = $due_date;
+    
+    return $assignment_info;
+  }

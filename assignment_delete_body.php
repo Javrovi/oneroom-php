@@ -2,21 +2,10 @@
   // Get the assignment id
   $assignment_id = $_GET['assignment_id'];
   
-  // Get the corresponding course id
-  $query = "SELECT name, due_date, course_id FROM assignments WHERE
-            assignment_id = '$assignment_id'";
-  $result = mysqli_query($dbc, $query)
-            or die('Error querying database: ' . mysqli_error($dbc));
-  if (mysqli_num_rows($result) == 1) {
-    // Success if only one row is returned
-    $row = mysqli_fetch_array($result);
-  } else {
-      // Something went wrong if the number of rows returned is not 1
-    die('Error querying database:
-         no assignment with this id or more than one assignment with the same id.');
-  }
-  $name = $row['name'];
-  $course_id = $row['course_id'];
+  // Get assignment's name
+  $assignment_info = get_assignment_info($dbc, $assignment_id);
+  $name = $assignment_info['name'];
+  $course_id = $assignment_info['course_id'];
   
   // Check that the teacher is teaching the course
   $query = "SELECT * FROM courses_teachers WHERE

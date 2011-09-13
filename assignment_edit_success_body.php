@@ -3,18 +3,8 @@
   $assignment_id = $_SESSION['assignment_id'];
   
   // Get assignment's name
-  $query = "SELECT name FROM assignments WHERE
-              assignment_id = '$assignment_id'";
-  $result = mysqli_query($dbc, $query);
-  if (mysqli_num_rows($result) == 1) {
-    // Success if only one row is returned
-    $row = mysqli_fetch_array($result);
-  } else {
-    // Something went wrong if the number of rows returned is not 1
-    die('Error querying database:
-         no assignment with this id or more than one assignment with the same id.');
-  }
-  $name = $row['name'];
+  $assignment_info = get_assignment_info($dbc, $assignment_id);
+  $name = $assignment_info['name'];
   
   // Get course's full name
   $course_full_name = get_course_full_name($dbc, $course_id);  

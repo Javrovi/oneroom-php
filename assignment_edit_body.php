@@ -39,23 +39,10 @@
   } else {
     // Otherwise, get existing assignment name and due date from the database
     $assignment_id = $_GET['assignment_id'];
-    $query = "SELECT name, due_date, course_id FROM assignments WHERE
-              assignment_id = '$assignment_id'";
-    $result = mysqli_query($dbc, $query)
-              or die('Error querying database: ' . mysqli_error($dbc));
-    if (mysqli_num_rows($result) == 1) {
-      // Success if only one row is returned
-      $row = mysqli_fetch_array($result);
-    } else {
-        // Something went wrong if the number of rows returned is not 1
-      die('Error querying database:
-           no assignment with this id or more than one assignment with the same id.');
-    }
-    $name = $row['name'];
-    $due_date_array = explode('-', $row['due_date']);
-    $due_date = $due_date_array[1] . '/' . $due_date_array[2] . '/' .
-                $due_date_array[0];
-    $course_id = $row['course_id'];
+    $assignment_info = get_assignment_info($dbc, $assignment_id);
+    $name = $assignment_info['name'];
+    $course_id = $assignment_info['course_id'];
+    $due_date_string = $assignment_info['due_date_string'];
     
     $_SESSION['assignment_id'] = $assignment_id;
     $_SESSION['course_id'] = $course_id;
@@ -72,7 +59,7 @@
   <!-- Assignment Due Date -->
   <label for="due_date">due date:</label>
   <input type="text" id="due_date" name="due_date"
-         value="<?php echo $due_date; ?>" /><br />
+         value="<?php echo $due_date_string; ?>" /><br />
   
   <!-- Submission -->
   <input type="submit" value="update assignment" id="submit" name="submit" />
