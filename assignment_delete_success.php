@@ -1,15 +1,15 @@
 <?php
   // Initialize page
   require_once('init_page.php');
- 
+
   // Set page title
-  $page_title = 'Assignment Update Successful';
+  $page_title = 'Assignment Deletion Successful';
   
   // Set main content heading file
-  $content_heading = 'assignment_edit_success_heading.php';
+  $content_heading = 'assignment_delete_success_heading.php';
   
   // Set main content body file
-  $content_body = 'assignment_edit_success_body.php';
+  $content_body = 'assignment_delete_success_body.php';
   
   // Render with 'base.php' template
   require_once('base.php');

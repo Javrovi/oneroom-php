@@ -30,6 +30,7 @@
                   or die('Error querying database: ' . mysqli_error($dbc));
   
       // Redirect to success page
+      $_SESSION['assignment_id'] = $assignment_id;
       $_SESSION['course_id'] = $course_id;
       redirect('assignment_edit_success.php');
     } else {

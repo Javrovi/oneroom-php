@@ -67,7 +67,8 @@
       $assignment_id = $row['assignment_id'];
       echo "<a class=\"paren-link\" href=\"assignment_edit.php?assignment_id=$assignment_id\">";
       echo " (edit)</a>";
-      echo '<a class="paren-link" href="#"> (delete)</a>';
+      echo "<a class=\"paren-link\" href=\"assignment_delete.php?assignment_id=$assignment_id\">";
+      echo ' (delete)</a>';
     }
   }
   echo '</ul>';
