@@ -15,7 +15,7 @@
   $course_id = $assignment_info['course_id'];  
   $course_full_name = get_course_full_name($dbc, $course_id);  
   $course_name = $course_full_name['name'];
-  $course_sememster = $course_full_name['semester'];
+  $course_semester = $course_full_name['semester'];
   $course_year = $course_full_name['year'];
   
   $page_title = $course_name . ' ' . $name;
