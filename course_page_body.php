@@ -35,14 +35,17 @@
   while ($row = mysqli_fetch_array($result)) {
     $first_name = $row['first_name'];
     $last_name = $row['last_name'];
+    $student_id = $row['id'];
     echo '<li>' . $first_name . ' ' . $last_name;
     if ($is_teacher) {
-      echo '<a class="paren-link" href="#"> (grades)</a>';
+      echo "<a class=\"paren-link\" href=\"grades_page.php?course_id=$course_id&";
+      echo "student_id=$student_id\"> (grades)</a>";
       echo '<a class="paren-link" href="#"> (remove)</a>';
     }
   }
   echo '</ul>';
 ?>
+ 
 
 <!-- List Assignments -->
 <h4>

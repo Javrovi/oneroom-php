@@ -25,8 +25,8 @@
         
       // If user is a student, display link to her grades in the course
       if (!$is_teacher) {
-        echo '<a class="paren-link" href="#">';
-        echo ' (grades)';
+        echo "<a class=\"paren-link\" href=\"grades_page.php?course_id=$course_id&";
+        echo "student_id=$user_id\"> (grades)</a>";
       }
         
       // Display link to remove self from course, passing course id and

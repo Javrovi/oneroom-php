@@ -20,7 +20,7 @@
     
   // Print success message
   echo '<p>You have successfully inputted a grade for ';
-  echo "<a href=\"grade_page.php?course_id=$course_id&";
+  echo "<a href=\"grades_page.php?course_id=$course_id&";
   echo "student_id=$student_id\">";
   echo "$first_name $last_name </a>";
   echo "in <a href=\"course_page.php?course_id=$course_id\">";
