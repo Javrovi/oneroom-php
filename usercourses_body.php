@@ -32,7 +32,7 @@
       // Display link to remove self from course, passing course id and
       // user id as GET parameters
       echo '<a class="paren-link" href="course_remove_user.php?course_id=' .
-             $course_id . '&user_id=' . $user_id . '">';
+             $course_id . '&remove_user_id=' . $user_id . '">';
       echo ' (remove self from course)</a>';
       echo '</li>';  
     }

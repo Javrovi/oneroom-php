@@ -5,18 +5,16 @@
    */
   function is_teacher($dbc, $user_id) {
     $is_teacher = false;
-    if (isset($_SESSION['user_id'])) {
-      $user_id = $_SESSION['user_id'];
- 
-      $query = "SELECT * FROM oneroom_users WHERE id = '$user_id'";
-      $result = mysqli_query($dbc, $query) or
-                die('Query failed: ' . mysqli_error($dbc));
-      $row = mysqli_fetch_array($result);
 
-      if ($row['user_type'] == 'teacher') {
-        $is_teacher = true;
-      }
+    $query = "SELECT * FROM oneroom_users WHERE id = '$user_id'";
+    $result = mysqli_query($dbc, $query) or
+              die('Query failed: ' . mysqli_error($dbc));
+    $row = mysqli_fetch_array($result);
+
+    if ($row['user_type'] == 'teacher') {
+      $is_teacher = true;
     }
+    
     return $is_teacher;
   }
   

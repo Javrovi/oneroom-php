@@ -1,9 +1,37 @@
 <?php
-  // Only logged in users can remove themselves from courses
-  if ($logged_in) {
-    echo '<h1>Remove User From Course</h1>';
+  $course_id = $_GET['course_id'];
+  $remove_user_id = $_GET['remove_user_id'];
+
+  if (!$logged_in) {
+    redirect('nopermissions.php');
   } else {
-  // Redirect to a page informing the user that he doesn't have the permissions.
-  redirect('/nopermissions.php');
+    // you can always remove yourself
+    if ($user_id == $remove_user_id) {
+      goto ok;
+    }
+    
+    if ($is_teacher) {
+      // if logged in user is a teacher, ok if she's teaching the course
+      // and the user to be removed is a student
+      
+      // is the user teaching the class?
+      $query = "SELECT * FROM courses_teachers WHERE
+                course_id = '$course_id' and teacher_id = '$user_id'";
+      $result = mysqli_query($dbc, $query);
+      // if not, redirect
+      if (mysqli_num_rows($result) == 0) {
+        redirect('nopermissions.php');
+      }
+      // if so, okay if user to be removed is a student
+      // (a teacher cannot remove a co-teacher
+      if (!is_teacher($dbc, $remove_user_id)) {
+        goto ok;
+      } 
+    }
+    // if we haven't gone to 'ok', redirect
+    redirect('nopermissions.php');
   }
+
+  ok:
+  echo '<h1>Remove User From Course</h1>';
 ?>

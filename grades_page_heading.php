@@ -1,20 +1,20 @@
 <?php
   if (!$logged_in) {
-    redirect('/nopermissions.php');
+    redirect('nopermissions.php');
   } else {
     if ($is_teacher) {
       // check that the teacher is teaching the class
       $query = "SELECT * FROM courses_teachers WHERE
-                course_id = '$course_id'";
+                course_id = '$course_id' and teacher_id = '$user_id'";
       $result = mysqli_query($dbc, $query);
       if (mysqli_num_rows($result) == 0) {
-        redirect('/nopermissions.php');
+        redirect('nopermissions.php');
       } 
     } else {
       // check if logged in user is the student whose grades
       // are requested in the GET request
       if ($user_id != $student_id) {
-        redirect('/nopermissions.php');
+        redirect('nopermissions.php');
       }
     }
   }

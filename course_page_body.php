@@ -40,7 +40,9 @@
     if ($is_teacher) {
       echo "<a class=\"paren-link\" href=\"grades_page.php?course_id=$course_id&";
       echo "student_id=$student_id\"> (grades)</a>";
-      echo '<a class="paren-link" href="#"> (remove)</a>';
+      echo '<a class="paren-link" href="course_remove_user.php?course_id=' .
+             $course_id . '&remove_user_id=' . $student_id . '">';
+      echo '(remove)</a>';
     }
   }
   echo '</ul>';

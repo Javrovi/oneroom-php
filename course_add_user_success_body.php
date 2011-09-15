@@ -25,8 +25,21 @@
               VALUES ('$user_id', '$course_id')";
   }
   
-  mysqli_query($dbc, $query)
-    or die('Error querying database: ' . mysqli_error($dbc));
+  // Now, we're going to check if the user is already in the course
+  // We only add the user if the user is not already in the course
+  if ($is_teacher) {
+    $query2 = "SELECT * from courses_teachers WHERE
+              course_id = '$course_id' and teacher_id = '$user_id'";
+  } else {
+    $query2 = "SELECT * from courses_students WHERE
+              course_id = '$course_id' and student_id = '$user_id'";
+  }
+  $result = mysqli_query($dbc, $query2)
+      or die('Error querying database: ' . mysqli_error($dbc));
+  if (mysqli_num_rows($result) == 0) {
+    mysqli_query($dbc, $query)
+      or die('Error querying database: ' . mysqli_error($dbc));
+  }
   
   $user_full_name = get_user_full_name($dbc, $user_id);
   $first_name = $user_full_name['first_name'];
