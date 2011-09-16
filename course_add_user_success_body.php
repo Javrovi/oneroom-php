@@ -50,7 +50,8 @@
   $semester = $course_full_name['semester'];
   $year = $course_full_name['year'];
   
-  echo '<p>You have successfully added <a href="#"> ';
+  echo '<p>You have successfully added ';
+  echo "<a href=\"course_page.php?course_id=$course_id\">";
   echo $name . ', ' . $semester . ' ' . $year . '</a> ';
   echo 'to <a href="usercourses.php">your courses</a>.</p>';
 ?>

@@ -20,7 +20,7 @@
       
       // Display course info with link to course details page
       echo '<li>';
-      echo '<a href="#">';
+      echo "<a href=\"course_page.php?course_id=$course_id\">";
       echo $name . ', ' . $semester . ' ' . $year . '</a>';
         
       // If user is a student, display link to her grades in the course
