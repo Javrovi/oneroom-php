@@ -1,6 +1,4 @@
 <?php
-  $course_id = $_SESSION['course_id'];
-  
   // Get course's full name
   $course_full_name = get_course_full_name($dbc, $course_id);  
   $name = $course_full_name['name'];

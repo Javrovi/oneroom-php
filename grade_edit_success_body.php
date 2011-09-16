@@ -1,5 +1,4 @@
 <?php
-  $course_id = $_SESSION['course_id'];
   $assignment_id = $_SESSION['assignment_id'];
   $student_id = $_SESSION['student_id'];
   

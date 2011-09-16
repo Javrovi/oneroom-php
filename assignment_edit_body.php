@@ -36,12 +36,8 @@
     } else {
       echo '<p class="error">You must enter all of the sign-up data, including the desired password twice.</p>';
     }
-  } else {
-    // Otherwise, get existing assignment name and due date from the database
-    $assignment_id = $_GET['assignment_id'];
-    $assignment_info = get_assignment_info($dbc, $assignment_id);
+  } else {  
     $name = $assignment_info['name'];
-    $course_id = $assignment_info['course_id'];
     $due_date_string = $assignment_info['due_date_string'];
     
     $_SESSION['assignment_id'] = $assignment_id;

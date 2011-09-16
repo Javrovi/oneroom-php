@@ -28,15 +28,13 @@
         echo '<p class="error">You must enter all of the sign-up data, including the desired password twice.</p>';
       }
     } else {
-    // Otherwise, grab the course id from the GET request
-      $course_id = $_GET['course_id'];
-      $_SESSION['course_id'] = $course_id;
-      
       // Get course's full name to populate form
       $course_full_name = get_course_full_name($dbc, $course_id);  
       $name = $course_full_name['name'];
       $semester = $course_full_name['semester'];
       $year = $course_full_name['year'];
+      
+      $_SESSION['course_id'] = $course_id;
     }
 ?>
 

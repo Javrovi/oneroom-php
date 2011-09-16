@@ -1,8 +1,5 @@
 <?php
-  $course_id = $_SESSION['course_id'];
-  $assignment_id = $_SESSION['assignment_id'];
-  
-  // Get assignment's name
+ // Get assignment's name
   $assignment_info = get_assignment_info($dbc, $assignment_id);
   $name = $assignment_info['name'];
   
