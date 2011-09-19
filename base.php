@@ -5,6 +5,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>OneRoom Grade Tracker | <?php echo $page_title; ?></title>
     <link rel="stylesheet" href="stylesheets/style.css" type="text/css" />
+    <?php if (isset($include_script)) {
+            echo $include_script;
+          }
+    ?>
   </head>
 
   <body>

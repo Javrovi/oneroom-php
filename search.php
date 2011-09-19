@@ -11,8 +11,16 @@
   // Set main content body file
   $content_body = 'search_body.php';
   
-  // Render with 'base.php' template
-  require_once('base.php');
+  // Set Javascript file
+  $include_script =
+    '<script src="scripts/search.js" type="text/javascript"></script>';
+  
+  // Render with 'base.php' template, unless it's a ajax request
+  if (isset($_GET['ajax'])) {
+    require_once($content_body);
+  } else {
+    require_once('base.php');
+  }
   
   // Close page
   require_once('close_page.php');
