@@ -63,4 +63,16 @@
   Course Grade: <span class="course_grade">
   <?php echo $course_grade; ?>
   </span>
-</p>
+
+<?php
+  $query = "SELECT teacher_id FROM courses_teachers WHERE
+            course_id = $course_id AND teacher_id = $user_id";
+  $result = mysqli_query($dbc, $query) or
+              die('Error querying database: ' . mysqli_error($dbc));
+  if (mysqli_num_rows($result) == 1) {
+    echo "<a class=\"paren-link\"";
+    echo "href=\"course_grade_edit.php?";
+    echo "course_id=$course_id&student_id=$student_id\"> (edit)";
+  }
+  echo '</p>';
+?>
