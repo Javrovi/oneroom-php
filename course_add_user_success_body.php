@@ -5,7 +5,7 @@
  
   if ($is_teacher) {
     // check passcode
-    $passcode = mysqli_real_escape_string($dbc, trim($_POST['passcode']));
+    $passcode = $_SESSION['passcode'];
     
     $query = "SELECT * FROM courses
               WHERE course_id = '$course_id' AND passcode = SHA('$passcode')";

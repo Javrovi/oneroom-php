@@ -16,8 +16,6 @@
     $assignment_info = get_assignment_info($dbc, $assignment_id);
     $name = $assignment_info['name'];
     
-    echo $course_id;
-    
     // Get course name
     $course_full_name = get_course_full_name($dbc, $course_id);  
     $course_name = $course_full_name['name'];

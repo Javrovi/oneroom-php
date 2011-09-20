@@ -6,12 +6,23 @@
     $name = mysqli_real_escape_string($dbc, trim($_POST['name']));
     $due_date = mysqli_real_escape_string($dbc, trim($_POST['due_date']));
   
-    // REMEMBER TO DO VALIDATION ON DATE
-    // ACCEPT ONLY THE MM/DD/YEAR FORMAT
-   
-    $matches = array();
-    if (!empty($name) && !empty($due_date) &&
-        preg_match('/(^\d{1,2})\/(\d{1,2})\/(\d{4})$/', $due_date, $matches)) {
+    // Validate form data
+    $form_errors = array();
+    $field_required_string = '<ul><li>This field is required.</li></ul>';
+    
+    if (empty($name)) {
+      $form_errors['name'] = $field_required_string;
+    }
+    if (empty($due_date)) {
+      $form_errors['due_date'] = $field_required_string;
+    } else {
+      $matches = array();
+      if (!preg_match('/(^\d{1,2})\/(\d{1,2})\/(\d{4})$/', $due_date, $matches)) {
+        $form_errors['due_date'] = '<ul><li>Enter a valid date.</li></ul>'; 
+      }
+    }
+
+    if (empty($form_errors)) {
       // Convert due date to MySQL's YYYY-MM-DD format
       $due_date = $matches[3] . '-' .
                   $matches[1] . '-' .
@@ -30,10 +41,6 @@
       $_SESSION['course_id'] = $course_id;
       redirect('assignment_create_success.php');
     }
-    else {
-      echo '<p class="error">You must enter all of the sign-up data, including the desired password twice.</p>';
-    }
-    
   }
 ?>
 
@@ -41,11 +48,13 @@
 <p>Teacher, create a new assignment below:</p>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
   <!-- Assignment Name -->
+  <?php echo $form_errors['name']; ?>
   <label for="name">assignment name:</label>
   <input type="text" id="name" name="name"
          value="<?php if (!empty($name)) echo $name; ?>" /><br />
          
   <!-- Assignment Due Date -->
+  <?php echo $form_errors['due_date']; ?>
   <label for="due_date">due date:</label>
   <input type="text" id="due_date" name="due_date"
          value="<?php if (!empty($due_date)) echo $due_date; ?>" /><br />

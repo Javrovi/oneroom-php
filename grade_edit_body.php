@@ -4,8 +4,16 @@
     // Grab the grade from the POST
     $grade = mysqli_real_escape_string($dbc, trim($_POST['grade']));
 
-    if (!empty($grade)) {
-      // new grades? insert new row
+    // Validate form data
+    $form_errors = array();
+    $field_required_string = '<ul><li>This field is required.</li></ul>';
+    
+    if (empty($grade)) {
+      $form_errors['grade'] = $field_required_string;
+    }
+    
+    if (empty($form_errors)) {
+      // New grades?
       if ($grade_id == 0) {
         $query = "INSERT INTO grades (assignment_id, student_id, grade)
                   VALUES ('$assignment_id', '$student_id', '$grade')";
@@ -22,9 +30,7 @@
       $_SESSION['course_id'] = $course_id;
       $_SESSION['student_id'] = $student_id;
       redirect('grade_edit_success.php');
-    } else {
-      echo '<p class="error">You must enter all of the sign-up data, including the desired password twice.</p>';
-    }
+    } 
   } else {
     // Otherwise, get existing assignment name and due date from the database
     $query = "SELECT grade, grade_id FROM grades
@@ -50,6 +56,7 @@
 <!-- Course Edit Form -->
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
   <!-- Grade -->
+  <?php echo $form_errors['grade']; ?>
   <label for="grade">grade:</label>
   <input type="text" id="grade" name="grade"
          value="<?php echo $grade; ?>" /><br />

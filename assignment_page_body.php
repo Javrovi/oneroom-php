@@ -37,7 +37,7 @@
       echo "$grade";
     }
     $query = "SELECT teacher_id FROM courses_teachers WHERE
-              course_id = $course_id";
+              course_id = $course_id AND teacher_id = $user_id";
     $result4 = mysqli_query($dbc, $query) or
               die('Error querying database: ' . mysqli_error($dbc));
     if (mysqli_num_rows($result4) == 1) {

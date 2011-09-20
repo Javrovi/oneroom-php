@@ -42,7 +42,7 @@
       echo "student_id=$student_id\"> (grades)</a>";
       echo '<a class="paren-link" href="course_remove_user.php?course_id=' .
              $course_id . '&remove_user_id=' . $student_id . '">';
-      echo '(remove)</a>';
+      echo ' (remove)</a>';
     }
   }
   echo '</ul>';
