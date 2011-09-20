@@ -57,13 +57,6 @@
         </div>
       </div>
       
-      <!-- to hide debug details, uncomment the 'display:none' line in
-         style.css for #debug -->
-      <div id="debug">
-        <p>
-          debug is on. :)
-        </p>
-      </div>
     </div>
     
     <div id="footer">

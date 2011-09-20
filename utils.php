@@ -208,3 +208,39 @@
     
     return $assignment_info;
   }
+  
+  
+  function drop_leading_zero($day) {
+    switch ($day) {
+      case '01':
+        return '1';
+        break;
+      case '02':
+        return '2';
+        break;
+      case '03';
+        return '3';
+        break;
+      case '04':
+        return '4';
+        break;
+      case '05':
+        return '5';
+        break;
+      case '06':
+        return '6';
+        break;
+      case '07':
+        return '7';
+        break;
+      case '08':
+        return '8';
+        break;
+      case '09':
+        return '9';
+        break;
+      default:
+        return $day;
+        break;
+    }
+  }

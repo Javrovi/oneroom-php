@@ -1,4 +1,11 @@
 <?php
+  /* acct_change_success.php
+   * -----------------------
+   * acct_change_success.php is run when a user has successfully updated
+   * her OneRoom account (e.g., updated her email or password).  A message
+   * of successful update is displayed to the user.
+   */
+  
   // Initialize page
   require_once('init_page.php');
  

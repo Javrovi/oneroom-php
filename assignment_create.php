@@ -1,4 +1,14 @@
 <?php
+  /* assignment_create.php
+   * ---------------------
+   * assignment_create.php is run when a teacher of a course clicks a link
+   * to create a new assignment.  A form is provided, in which the teacher
+   * inputs the name of the assignment and its due date.  A new assignment
+   * is created with the input and added to the assignments table if the
+   * form has no validation errors.  After assignment creation, the teacher
+   * is directed to assignment_create_success.php
+   */
+  
   // Initialize page
   require_once('init_page.php');
 

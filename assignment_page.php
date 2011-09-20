@@ -1,4 +1,16 @@
 <?php
+  /* assignment_page.php
+   * -------------------
+   * assignment_page.php is accessed through a link on the course page
+   * (course_page.php).  Each assignment has its own assignment page.
+   * The assignment id is passed in as a GET parameter.
+   *
+   * On the assignment page itself, a list of students and their grades
+   * for the assignment are displayed.  Note that student users will only
+   * see their own grade.  Teacher users will see a list of all the students
+   * and their grades and are provided with links to edit the grades.
+   */
+  
   // Do preliminary setup
   require_once("init_page.php");
   

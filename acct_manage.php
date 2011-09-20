@@ -1,4 +1,11 @@
 <?php
+  /* acct_manage.php
+   * ---------------
+   * acct_manage.php is run when a user access a link to manage her
+   * OneRoom account.  Two choices are presented to the user: to update
+   * her email address or to change her password.
+   */
+
   // Initialize page
   require_once('init_page.php');
  

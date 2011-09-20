@@ -1,4 +1,12 @@
 <?php
+  /* assignment_edit.php
+   * -------------------
+   * assignment_edit.php is run when a teacher clicks on a link on
+   * course_page.php to edit an assignment.  The teacher is presented with a
+   * form, in which the assignment's old data is pre-filled in.  After form
+   * submission, the teacher is redirected to assignment_edit_success.php
+   */
+  
   // Initialize page
   require_once('init_page.php');
 

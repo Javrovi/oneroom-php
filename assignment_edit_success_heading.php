@@ -1,7 +1,11 @@
 <?php
+  // course id and assignment id have been saved as session variables
+  // by assignment_edit.php
   $course_id = $_SESSION['course_id'];
   $assignment_id = $_SESSION['assignment_id'];
   
+  // Permissions: only teachers of the course to which the assignment belongs
+  // can edit the assignment.
   if (!$logged_in) {
     redirect('nopermissions.php');
   } else {
@@ -11,7 +15,7 @@
       // is the user teaching the class?
       $query = "SELECT * FROM courses_teachers WHERE
                 course_id = '$course_id' and teacher_id = '$user_id'";
-      $result = mysqli_query($dbc, $query);
+      $result = mysqli_query($dbc, $query) or redirect('500.php');
       // if not, redirect
       if (mysqli_num_rows($result) == 0) {
         redirect('nopermissions.php');

@@ -1,8 +1,8 @@
 <?php
-  $course_id = $_SESSION['course_id'];
-  
   if (isset($_POST['submit'])) {
-    // Grab the profile data from the POST
+    // Processing after form submission
+    
+    // Grab the assignment data from the POST
     $name = mysqli_real_escape_string($dbc, trim($_POST['name']));
     $due_date = mysqli_real_escape_string($dbc, trim($_POST['due_date']));
   
@@ -16,12 +16,14 @@
     if (empty($due_date)) {
       $form_errors['due_date'] = $field_required_string;
     } else {
+      // Due date must be in the format: MM/DD/YYYY
       $matches = array();
       if (!preg_match('/(^\d{1,2})\/(\d{1,2})\/(\d{4})$/', $due_date, $matches)) {
         $form_errors['due_date'] = '<ul><li>Enter a valid date.</li></ul>'; 
       }
     }
 
+    // If no form errors, proceed to add assignment to database
     if (empty($form_errors)) {
       // Convert due date to MySQL's YYYY-MM-DD format
       $due_date = $matches[3] . '-' .
@@ -34,8 +36,7 @@
                 VALUES
                 ('$name', '$due_date', '$course_id')";
     
-      $result = mysqli_query($dbc, $query)
-                  or die('Error querying database: ' . mysqli_error($dbc));
+      $result = mysqli_query($dbc, $query) or redirect('500.php');
   
       // Redirect to success page
       $_SESSION['course_id'] = $course_id;
@@ -44,7 +45,7 @@
   }
 ?>
 
-<!-- Course Creation Form -->
+<!-- Assignment Creation Form -->
 <p>Teacher, create a new assignment below:</p>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
   <!-- Assignment Name -->

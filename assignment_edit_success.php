@@ -1,4 +1,10 @@
 <?php
+  /* assignment_edit_success.php
+   * ---------------------------
+   * assignment_edit_success.php is run when an assignment is successfully
+   * updated.  The teacher is informed that the assignment has been updated.
+   */
+  
   // Initialize page
   require_once('init_page.php');
  

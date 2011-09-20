@@ -1,4 +1,11 @@
 <?php
+  /* assignment_create_success.php
+   * -----------------------------
+   * assignment_create_success.php is run after an assignment has been
+   * successfully created.  A link back to the course in which the assignment
+   * has been created is provided to the user.
+   */
+  
   // Initialize page
   require_once('init_page.php');
  

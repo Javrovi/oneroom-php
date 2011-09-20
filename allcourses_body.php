@@ -4,14 +4,13 @@
    
   // Get all courses from the database
   $query = "SELECT course_id, name, semester, year FROM courses";
-  $result = mysqli_query($dbc, $query)
-            or die('Error querying database: ' . mysqli_error($dbc));
+  $result = mysqli_query($dbc, $query) or redirect('500.php');
             
   if (mysqli_num_rows($result) == 0) {
     // If there are no courses yet, say so.
     echo '<p>There are no courses yet.</p>';
   } else {
-    // For each course grab detailed course info and display
+    // For each course grab detailed course info and display;
     // The courses are displayed in an unordered list.
     echo '<ul>';
     while ($row = mysqli_fetch_array($result)) {
