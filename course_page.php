@@ -1,4 +1,10 @@
 <?php
+  /* course_page.php
+   * ---------------
+   * course_page.php displays course information for a course: teachers,
+   * students, and assignments.
+   */
+  
   // Do preliminary setup
   require_once("init_page.php");
   

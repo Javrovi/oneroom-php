@@ -1,4 +1,9 @@
 <?php
+  /* email_change.php
+   * ----------------
+   * email_change.php processes a user's request to update her email.
+   */
+  
   // Initialize page
   require_once('init_page.php');
 

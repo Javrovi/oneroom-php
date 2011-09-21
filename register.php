@@ -1,4 +1,9 @@
 <?php
+  /* register.php
+   * ------------
+   * register.php registers a new user for OneRoom.
+   */
+  
   // Initialize page
   require_once('init_page.php');
 

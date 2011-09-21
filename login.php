@@ -1,4 +1,9 @@
 <?php
+  /* login.php
+   * ---------
+   * login.php logs in a user.
+   */
+  
   // Initialize page
   require_once('init_page.php');
 

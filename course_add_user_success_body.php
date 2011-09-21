@@ -1,16 +1,14 @@
 <?php
-  // Get the course id and the user id
+  // Get the course id 
   $course_id = $_SESSION['course_id'];
-  $user_id = $_SESSION['user_id'];
  
   if ($is_teacher) {
-    // check passcode
+    // check passcode if the user is tacher
     $passcode = $_SESSION['passcode'];
     
     $query = "SELECT * FROM courses
               WHERE course_id = '$course_id' AND passcode = SHA('$passcode')";
-    $result = mysqli_query($dbc, $query)
-      or die('Error querying database: ' . mysqli_error($dbc));
+    $result = mysqli_query($dbc, $query) or redirect('500.php');
     
     if (mysqli_num_rows($result) == 1) {
       // add teacher to courses_teachers junction table
@@ -34,11 +32,9 @@
     $query2 = "SELECT * from courses_students WHERE
               course_id = '$course_id' and student_id = '$user_id'";
   }
-  $result = mysqli_query($dbc, $query2)
-      or die('Error querying database: ' . mysqli_error($dbc));
+  $result = mysqli_query($dbc, $query2) or redirect('500.php');
   if (mysqli_num_rows($result) == 0) {
-    mysqli_query($dbc, $query)
-      or die('Error querying database: ' . mysqli_error($dbc));
+    mysqli_query($dbc, $query) or redirect('500.php');
   }
   
   $user_full_name = get_user_full_name($dbc, $user_id);

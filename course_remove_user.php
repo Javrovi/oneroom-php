@@ -1,4 +1,11 @@
 <?php
+  /* course_remove_user.php
+   * -------------------
+   * course_remove_user.php is run when a user indicates that she wants to
+   * remove herself from a course.  She is presented with a confirmation
+   * question.
+   */
+  
   // Initialize page
   require_once('init_page.php');
 

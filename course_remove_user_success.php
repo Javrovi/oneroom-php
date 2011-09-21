@@ -1,4 +1,10 @@
 <?php
+  /* course_remove_user_success.php
+   * ---------------------------
+   * course_remove_user_success.php is run when the user confirms that she
+   * wants to add herself to a course.  
+   */
+
   // Initialize page
   require_once('init_page.php');
 

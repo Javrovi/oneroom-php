@@ -28,12 +28,12 @@
       <div id="nav">
         <div id="app_name">
           <p>
-            <a href="home.php">OneRoom</a>
+            <a href="index.php">OneRoom</a>
           </p>
         </div>
         
         <div id="course_nav">
-          <a href="home.php">home</a> |
+          <a href="index.php">home</a> |
           <?php if ($logged_in) { ?>
             <a href="allcourses.php">all courses</a> |
             <a href="usercourses.php">my courses</a> |

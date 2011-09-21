@@ -13,7 +13,7 @@
     } else {
       $query = "SELECT id, username FROM oneroom_users WHERE
                 username = '$username' AND password = SHA('$password')";
-      $data = mysqli_query($dbc, $query);
+      $data = mysqli_query($dbc, $query) or redirect('500.php');
 
       if (mysqli_num_rows($data) == 1) {
           // The log-in is OK so set the user ID and username session vars
@@ -23,7 +23,7 @@
         $_SESSION['username'] = $row['username'];
           
         // Redirect
-        redirect('home.php');
+        redirect('index.php');
       } else {
         $form_errors['login'] = $login_error;
       }

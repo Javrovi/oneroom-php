@@ -1,5 +1,6 @@
 <?php
-  // Only logged in teachers can edit courses
+  // Permissions: only teachers of the course can edit a student's grade
+  // for an assignment in that course.
   if ($is_teacher) {
     if (isset($_POST['submit'])) {
       $assignment_id = $_SESSION['assignment_id'];
@@ -30,7 +31,7 @@
     // Check that the teacher is teaching the course
     $query = "SELECT * FROM courses_teachers WHERE
                 course_id = '$course_id' and teacher_id = '$user_id'";
-    $result = mysqli_query($dbc, $query);
+    $result = mysqli_query($dbc, $query) or redirect('500.php');
     // if not, redirect
     if (mysqli_num_rows($result) == 0) {
       redirect('nopermissions.php');

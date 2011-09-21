@@ -1,4 +1,8 @@
 <?php
+  /* password_change.php
+   * ----------------
+   * password_change.php processes a user's request to update her email.
+   */
   // Initialize page
   require_once('init_page.php');
   

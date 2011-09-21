@@ -1,4 +1,6 @@
 <?php
+  // Permissions: only users who are teaching or taking the course can
+  // see the course page.
   if (!$logged_in) {
     redirect('nopermissions.php');
   } else {
@@ -8,7 +10,7 @@
       // for teachers, check that the logged in user is teaching the course
       $query = "SELECT * FROM courses_teachers WHERE
                 course_id = '$course_id' and teacher_id = '$user_id'";
-      $result = mysqli_query($dbc, $query);
+      $result = mysqli_query($dbc, $query) or redirect('500.php');
       
       // if the teacher is not teaching the course, redirect
       if (mysqli_num_rows($result) == 0) {
@@ -16,6 +18,7 @@
       }
       
       // otherwise, print proper heading
+      // teachers can edit or delete courses
       echo "<h2><a href=\"course_edit.php?course_id=$course_id\">";
       echo "(edit course)</a>";
       echo "<a href=\"course_delete.php?course_id=$course_id\">";
@@ -24,7 +27,7 @@
       // for students, check that the logged in user is a student in the course
       $query = "SELECT * FROM courses_students WHERE
                 course_id = '$course_id' and student_id = '$user_id'";
-      $result = mysqli_query($dbc, $query);
+      $result = mysqli_query($dbc, $query) or redirect('500.php');
       
       // if the student is not in the course, redirect
       if (mysqli_num_rows($result) == 0) {
@@ -32,6 +35,7 @@
       }
       
       // otherwise, print proper heading
+      // students are provided with a link to their grades for the course
       echo '<h2>';
       echo "<a class=\"paren-link\" href=\"grades_page.php?course_id=$course_id&";
       echo "student_id=$user_id\"> (my grades)</a>";

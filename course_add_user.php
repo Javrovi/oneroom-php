@@ -1,4 +1,10 @@
 <?php
+  /* course_add_user.php
+   * -------------------
+   * course_add_user.php is run when a user indicates that she wants to
+   * add herself to a course.  She is presented with a confirmation question.
+   */
+  
   // Initialize page
   require_once('init_page.php');
  

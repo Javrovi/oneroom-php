@@ -1,4 +1,10 @@
 <?php
+  /* course_edit_success.php
+   * -----------------------
+   * course_edit_success.php is run when a course has been successfully
+   * edited by one of its teacher.  A success message is displayed.
+   */
+  
   // Initialize page
   require_once('init_page.php');
  

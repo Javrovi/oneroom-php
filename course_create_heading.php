@@ -1,5 +1,5 @@
 <?php
-  // Only logged in teachers can edit courses
+  // Permissions: only teachers can create courses
   if ($is_teacher) {
     echo '<h1>Create a New Course</h1>';
   } else {

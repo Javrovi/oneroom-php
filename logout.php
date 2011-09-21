@@ -1,4 +1,9 @@
 <?php
+  /* logout.php
+   * ----------
+   * logout.php logs out the currently logged-in user.
+   */
+  
   require_once('utils.php');
   
   // If the user is logged in, delete the session vars to log them out
@@ -17,5 +22,5 @@
   }
 
   // Redirect to the home page
-  redirect('home.php');
+  redirect('index.php');
 ?>

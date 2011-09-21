@@ -19,8 +19,7 @@
                 WHERE
                 course_id = '$course_id'";
                    
-      $result = mysqli_query($dbc, $query)
-                  or die('Error querying database: ' . mysqli_error($dbc));
+      $result = mysqli_query($dbc, $query) or redirect('500.php');
 
       // Report success to the user
       redirect('course_edit_success.php');

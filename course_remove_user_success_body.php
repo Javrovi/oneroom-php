@@ -8,15 +8,14 @@
     $query = "DELETE FROM courses_students WHERE
               student_id = '$remove_user_id' AND course_id = '$course_id'";
   }
-  mysqli_query($dbc, $query)
-    or die('Error querying database: ' . mysqli_error($dbc));
+  mysqli_query($dbc, $query) or redirect('500.php');
   
   // For students only: remove assignment grades and course grades
   if (!is_teacher($dbc, $remove_user_id)) {  
     // Remove any assignment grades
     $query = "SELECT assignment_id FROM assignments WHERE
               course_id = '$course_id'";
-    $result = mysqli_query($dbc, $query);
+    $result = mysqli_query($dbc, $query) or redirect('500.php');;
                 
     $assignment_ids = array();
     while ($row = mysqli_fetch_array($result)) {
@@ -26,13 +25,13 @@
     foreach ($assignment_ids as $assignment_id) {
       $query = "DELETE FROM grades WHERE
                 student_id = '$remove_user_id' AND assignment_id = '$assignment_id'";
-      mysqli_query($dbc, $query);
+      mysqli_query($dbc, $query) or redirect('500.php');;
     }
     
     // Remove any course grades
     $query = "DELETE FROM course_grades WHERE
               student_id = '$remove_user_id' AND course_id = '$course_id'";
-    mysqli_query($dbc, $query);
+    mysqli_query($dbc, $query) or redirect('500.php');;
   }
   
   $user_full_name = get_user_full_name($dbc, $remove_user_id);

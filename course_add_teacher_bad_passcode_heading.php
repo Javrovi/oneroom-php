@@ -1,5 +1,5 @@
 <?php
-  // Only logged in users can remove themselves from courses
+  // Permissions: only teachers can add themselves as teachers to courses.
   if ($is_teacher) {
     echo '<h1>Invalid Course Passcode</h1>';
   } else {

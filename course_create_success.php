@@ -1,4 +1,10 @@
 <?php
+  /* course_create_success.php
+   * -------------------------
+   * course_create_success.php is run when a course has been successfully
+   * created by a teacher.  A success message is displayed to the teacher.
+   */
+  
   // Initialize page
   require_once('init_page.php');
  

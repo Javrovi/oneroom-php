@@ -1,5 +1,5 @@
 <?php
-  // Only logged in teachers can create courses
+  // Permissions: only teachers can create courses
   if ($is_teacher) {
     echo '<h1>Course Successfully Created</h1>';
   } else {

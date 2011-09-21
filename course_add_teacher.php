@@ -1,4 +1,11 @@
 <?php
+  /* course_add_teacher.php
+   * ----------------------
+   * course_add_teacher.php is run when a teacher confirms that she wants
+   * to teach an existing course.  She is prompted for that course's course
+   * passcode.  Next, the passcode is processed by course_add_user_success.php.
+   */
+  
   // Initialize page
   require_once('init_page.php');
   

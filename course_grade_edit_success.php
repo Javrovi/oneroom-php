@@ -1,4 +1,10 @@
 <?php
+  /* course_grade_edit_success.php
+   * -----------------------------
+   * course_grade_edit_success.php is run when a course grade has been
+   * successfully edited by a teacher.  A success message is displayed.
+   */
+  
   // Initialize page
   require_once('init_page.php');
  

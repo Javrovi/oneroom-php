@@ -1,4 +1,11 @@
 <?php
+  /* course_add_teacher_bad_passcode.php
+   * -----------------------------------
+   * course_add_teacher_bad_passcode.php is run when a teacher attempts to
+   * add herself to a course but inputs an incorrect passcode for that course.
+   * The user is provided with a link to try again.
+   */
+  
   // Initialize page
   require_once('init_page.php');
  

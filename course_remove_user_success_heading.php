@@ -2,6 +2,13 @@
   $course_id = $_SESSION['course_id'];
   $remove_user_id = $_SESSION['remove_user_id'];
 
+  // Permissions:
+  // - a student can remove herself from a course
+  // - a teacher can remove herself from a course
+  // - a teacher can remove a student from a course that the teacher is
+  //   teaching
+  // - a teacher CANNOT remove another teacher from a course that the
+  //   teacher is teaching
   if (!$logged_in) {
     redirect('nopermissions.php');
   } else {
@@ -17,7 +24,7 @@
       // is the user teaching the class?
       $query = "SELECT * FROM courses_teachers WHERE
                 course_id = '$course_id' and teacher_id = '$user_id'";
-      $result = mysqli_query($dbc, $query);
+      $result = mysqli_query($dbc, $query) or redirect('500.php');
       // if not, redirect
       if (mysqli_num_rows($result) == 0) {
         redirect('nopermissions.php');

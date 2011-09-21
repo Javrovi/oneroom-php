@@ -7,8 +7,7 @@
 <?php
   $query = "SELECT name, assignment_id FROM assignments WHERE
              course_id = $course_id";
-  $result = mysqli_query($dbc, $query) or
-              die('Error querying database: ' . mysqli_error($dbc));
+  $result = mysqli_query($dbc, $query) or redirect('500.php');
   while ($row = mysqli_fetch_array($result)) {
     $name = $row['name'];
     echo "<tr><td>$name</td><td>";
@@ -17,8 +16,7 @@
     $query2 = "SELECT grade FROM grades WHERE
                assignment_id = $assignment_id AND
                student_id = $student_id";
-    $result2 = mysqli_query($dbc, $query2) or
-                die('Error querying database: ' . mysqli_error($dbc));
+    $result2 = mysqli_query($dbc, $query2) or redirect('500.php');
     if (mysqli_num_rows($result2) == 0) {
       // No grades have been assigned yet
       echo "Not Available";
@@ -29,8 +27,7 @@
     }
     $query3 = "SELECT teacher_id FROM courses_teachers WHERE
               course_id = $course_id AND teacher_id = $user_id";
-    $result3 = mysqli_query($dbc, $query) or
-              die('Error querying database: ' . mysqli_error($dbc));
+    $result3 = mysqli_query($dbc, $query) or redirect('500.php');
     if (mysqli_num_rows($result3) == 1) {
       echo "<a class=\"paren-link\"";
       echo "href=\"grade_edit.php?";
@@ -48,8 +45,7 @@
 <?php
   $query = "SELECT grade FROM course_grades WHERE
             course_id = $course_id AND student_id = $student_id";
-  $result = mysqli_query($dbc, $query) or
-              die('Error querying database: ' . mysqli_error($dbc));
+  $result = mysqli_query($dbc, $query) or redirect('500.php');
   if (mysqli_num_rows($result) == 0) {
       // No course grade has been assigned yet
       $course_grade = "Not Available";
@@ -67,8 +63,7 @@
 <?php
   $query = "SELECT teacher_id FROM courses_teachers WHERE
             course_id = $course_id AND teacher_id = $user_id";
-  $result = mysqli_query($dbc, $query) or
-              die('Error querying database: ' . mysqli_error($dbc));
+  $result = mysqli_query($dbc, $query) or redirect('500.php');
   if (mysqli_num_rows($result) == 1) {
     echo "<a class=\"paren-link\"";
     echo "href=\"course_grade_edit.php?";

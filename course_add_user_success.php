@@ -1,4 +1,11 @@
 <?php
+  /* course_add_user_success.php
+   * ---------------------------
+   * course_add_user_success.php is run when the user confirms that she
+   * wants to add herself to a course.  If the user is a teacher, the
+   * passcode that she entered is checked.  If the passcode matches, or if the
+   * user is a student, the user is added to the course.
+   */
   // Initialize page
   require_once('init_page.php');
  

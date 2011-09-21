@@ -23,7 +23,7 @@
         $form_errors['username'] = $field_required_string;
     } else {
         $query = "SELECT * FROM oneroom_users WHERE username = '$username'";
-        $data = mysqli_query($dbc, $query);
+        $data = mysqli_query($dbc, $query) or redirect('500.php');;
         if (mysqli_num_rows($data) > 0) {
             $form_errors['username'] =
                 '<ul><li>Username is already taken.</li></ul>';
@@ -54,8 +54,7 @@
                   ('$first_name', '$last_name', '$username', '$email',
                    '$usertype', SHA('$password1'))";
                          
-        $result = mysqli_query($dbc, $query)
-                    or die('Error querying database: ' . mysqli_error($dbc));
+        $result = mysqli_query($dbc, $query) or redirect('500.php');
 
         // Log in the newly-registered user
         $_SESSION['user_id'] = mysqli_insert_id($dbc);

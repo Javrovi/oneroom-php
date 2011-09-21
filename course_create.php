@@ -1,4 +1,12 @@
 <?php
+  /* course_create.php
+   * -----------------
+   * course_create.php is run when a teacher clicks on a link to create
+   * a new course.  A course creation form is displayed.  If the form is
+   * filled out without errors, a new course is created and the teacher is
+   * redirected to course_create_success.php.
+   */
+  
   // Initialize page
   require_once('init_page.php');
 

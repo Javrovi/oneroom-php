@@ -5,6 +5,7 @@
   $semester = $course_full_name['semester'];
   $year = $course_full_name['year'];
   
+  // Print confirmation question
   echo '<p>Are you sure you want to delete this course ';
   echo '(' . $name . ', ' . $semester . ' ' . $year . ')?</p>';
   

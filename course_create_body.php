@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
     }
   }
   
-  
+  // If there are no form errors, proceed to add new course to database
   if (empty($form_errors)) {
     // Insert new row into 'courses' table
     $query = "INSERT INTO courses
@@ -39,8 +39,7 @@ if (isset($_POST['submit'])) {
               VALUES
               ('$name', '$year', '$semester', SHA('$passcode1'))";
                  
-    $result = mysqli_query($dbc, $query)
-                or die('Error querying database: ' . mysqli_error($dbc));
+    $result = mysqli_query($dbc, $query) or redirect('500.php');
 
     // Grab the new course id and insert a new row into the
     // 'courses_teachers' table
@@ -50,8 +49,7 @@ if (isset($_POST['submit'])) {
               VALUES
               ('$user_id', '$course_id')";
     
-    $result = mysqli_query($dbc, $query)
-              or die('Error querying database: ' . mysqli_error($dbc));
+    $result = mysqli_query($dbc, $query) or redirect('500.php');
               
     // Redirect to success page
     $_SESSION['course_id'] = $course_id;

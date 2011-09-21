@@ -1,4 +1,10 @@
 <?php
+  /* nopermissions.php
+   * -----------------
+   * nopermissions.php displays a "Access Denied" message when a user
+   * tries to access a page she has no permission to access.
+   */
+  
   // Initialize page
   require_once('init_page.php');
 

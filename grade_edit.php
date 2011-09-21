@@ -1,4 +1,11 @@
 <?php
+  /* grade_edit.php
+   * ---------------------
+   * grade_edit.php is run when a teacher indicates that she wants to
+   * edit a student's grade for an assignment.  Successful form submission
+   * updates the student's grade for the assignment and redirects the teacher to
+   * grade_edit_success.php.
+   */
   // Initialize page
   require_once('init_page.php');
 

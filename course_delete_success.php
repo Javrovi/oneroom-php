@@ -1,4 +1,11 @@
 <?php
+  /* course_delete_success.php
+   * -------------------------
+   * course_delete_success.php is run when a teacher confirms that she
+   * wishes to delete a course.  The course is then removed from the database.
+   * A success message is displayed after removal.
+   */
+  
   // Initialize page
   require_once('init_page.php');
 

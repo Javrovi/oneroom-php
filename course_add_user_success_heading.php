@@ -1,5 +1,5 @@
 <?php
-  // Only logged in users can remove themselves from courses
+  // Only logged in users can add themselves to courses
   if ($logged_in) {
     echo '<h1>User Successfully Added To Course</h1>';
   } else {

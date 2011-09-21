@@ -22,8 +22,7 @@
                   WHERE grade_id = '$grade_id'";
       }
       
-      $result = mysqli_query($dbc, $query)
-                  or die('Error querying database: ' . mysqli_error($dbc));
+      $result = mysqli_query($dbc, $query) or redirect('500.php');
   
       // Redirect to success page
       $_SESSION['assignment_id'] = $assignment_id;
@@ -35,8 +34,7 @@
     // Otherwise, get existing assignment name and due date from the database
     $query = "SELECT grade, grade_id FROM grades
               WHERE student_id=$student_id and assignment_id=$assignment_id";
-    $result = mysqli_query($dbc, $query) or
-                die('Error querying database: ' . mysqli_error($dbc));
+    $result = mysqli_query($dbc, $query) or redirect('500.php');
     $row = mysqli_fetch_array($result);
     if (mysqli_num_rows($result) == 1) {
       $grade = $row['grade'];

@@ -23,8 +23,7 @@
     if (!empty($search_query)) {
       $query = "SELECT course_id, name, semester, year FROM courses
                 WHERE name LIKE '%$search_query%'";
-      $result = mysqli_query($dbc, $query)
-        or die('Error querying database: ' . mysqli_error($dbc));
+      $result = mysqli_query($dbc, $query) or redirect('500.php');
     
       if (!isset($_GET['ajax'])) {
         echo '<div id="search_results">';

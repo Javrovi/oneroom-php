@@ -1,4 +1,10 @@
 <?php
+  /* search.php
+   * ----------
+   * search.php allows the user to search courses.  If Ajax is supported,
+   * the search request is processed via Ajax.
+   */
+  
   // Initialize page
   require_once('init_page.php');
   

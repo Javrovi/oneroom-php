@@ -19,8 +19,7 @@
     if (empty($form_errors)) {
       $query = "UPDATE oneroom_users SET email = '$email'
                 WHERE id = '$user_id'";
-      $result = mysqli_query($dbc, $query)
-                  or die('Error querying database: ' . mysqli_error($dbc));
+      $result = mysqli_query($dbc, $query) or redirect('500.php');
   
       // Redirect to success page
       redirect('acct_change_success.php');
@@ -28,8 +27,7 @@
   } else {
     // get existing email from database
     $query = "SELECT email FROM oneroom_users WHERE id=$user_id";
-    $result = mysqli_query($dbc, $query) or
-                die('Error querying database: ' . mysqli_error($dbc));
+    $result = mysqli_query($dbc, $query) or redirect('500.php');
     $row = mysqli_fetch_array($result);
     $email = $row['email'];
   }

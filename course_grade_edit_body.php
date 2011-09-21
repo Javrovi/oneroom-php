@@ -22,8 +22,7 @@
                   WHERE course_grade_id = '$course_grade_id'";
       }
       
-      $result = mysqli_query($dbc, $query)
-                  or die('Error querying database: ' . mysqli_error($dbc));
+      $result = mysqli_query($dbc, $query) or redirect('500.php');
   
       // Redirect to success page
       $_SESSION['course_id'] = $course_id;
@@ -34,8 +33,7 @@
     // Otherwise, get existing course grade from the database
     $query = "SELECT grade, course_grade_id FROM course_grades
               WHERE student_id=$student_id and course_id=$course_id";
-    $result = mysqli_query($dbc, $query) or
-                die('Error querying database: ' . mysqli_error($dbc));
+    $result = mysqli_query($dbc, $query) or redirect('500.php');
     $row = mysqli_fetch_array($result);
     if (mysqli_num_rows($result) == 1) {
       $grade = $row['grade'];

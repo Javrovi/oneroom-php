@@ -1,4 +1,12 @@
 <?php
+  /* course_grade_edit.php
+   * ---------------------
+   * course_grade_edit.php is run when a teacher indicates that she wants to
+   * edit a student's course grade.  Successful form submission updates the
+   * student's course grade and redirects the teacher to
+   * course_grade_edit_success.php.
+   */
+  
   // Initialize page
   require_once('init_page.php');
 

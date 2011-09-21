@@ -6,7 +6,7 @@
       // check that the teacher is teaching the class
       $query = "SELECT * FROM courses_teachers WHERE
                 course_id = '$course_id' and teacher_id = '$user_id'";
-      $result = mysqli_query($dbc, $query);
+      $result = mysqli_query($dbc, $query) or redirect('500.php');
       if (mysqli_num_rows($result) == 0) {
         redirect('nopermissions.php');
       } 

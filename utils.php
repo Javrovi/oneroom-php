@@ -1,4 +1,10 @@
 <?php
+  /* utils.php
+   * ---------
+   * utils.php contains the utility functions for the OneRoom PHP web
+   * application.
+   */
+  
   /*
    * is_teacher() returns true if the user with $user_id is a teacher
    *  and false otherwise.
@@ -7,8 +13,7 @@
     $is_teacher = false;
 
     $query = "SELECT * FROM oneroom_users WHERE id = '$user_id'";
-    $result = mysqli_query($dbc, $query) or
-              die('Query failed: ' . mysqli_error($dbc));
+    $result = mysqli_query($dbc, $query) or redirect('500.php');
     $row = mysqli_fetch_array($result);
 
     if ($row['user_type'] == 'teacher') {
@@ -41,8 +46,7 @@
       $query = "SELECT course_id FROM courses_students WHERE
                 student_id = '$user_id'";
     }
-    $result = mysqli_query($dbc, $query)
-              or die('Error querying database: ' . mysqli_error($dbc));
+    $result = mysqli_query($dbc, $query) or redirect('500.php');
     
     // Grab the course ids and put them into an array
     $user_course_ids = array();
@@ -66,14 +70,12 @@
     // Get first name and last name from the database
     $query = "SELECT first_name, last_name FROM oneroom_users WHERE
               id = '$user_id'";
-    $result = mysqli_query($dbc, $query)
-                or die('Error querying database: ' . mysqli_error($dbc));
+    $result = mysqli_query($dbc, $query) or redirect('500.php');
     if (mysqli_num_rows($result) == 1) {
       // Success if only one row is returned
       $row = mysqli_fetch_array($result);
     } else {
-      die('Error querying database:
-           no user with this id or more than one user with the same id.');
+      redirect('500.php');
     }
    
     $user_full_name = array();
@@ -96,15 +98,13 @@
   function get_course_full_name($dbc, $course_id) {
     $query = "SELECT name, semester, year FROM courses WHERE
               course_id = '$course_id'";
-    $result = mysqli_query($dbc, $query)
-              or die('Error querying database: ' . mysqli_error($dbc));
+    $result = mysqli_query($dbc, $query) or redirect('500.php');
     if (mysqli_num_rows($result) == 1) {
         // Success if only one row is returned
         $row = mysqli_fetch_array($result);
     } else {
       // Something went wrong if the number of rows returned is not 1
-      die('Error querying database:
-           no course with this id or more than one course with the same id.');
+      redirect('500.php');
     }
     
     $course_full_name = array();
@@ -136,15 +136,13 @@
   function get_assignment_info($dbc, $assignment_id) {
     $query = "SELECT name, due_date, course_id FROM assignments WHERE
               assignment_id = '$assignment_id'";
-    $result = mysqli_query($dbc, $query)
-              or die('Error querying database: ' . mysqli_error($dbc));
+    $result = mysqli_query($dbc, $query) or redirect('500.php');
     if (mysqli_num_rows($result) == 1) {
         // Success if only one row is returned
         $row = mysqli_fetch_array($result);
     } else {
       // Something went wrong if the number of rows returned is not 1
-      die('Error querying database:
-           no course with this id or more than one course with the same id.');
+      redirect('500.php');
     }
     
     $assignment_info = array();
@@ -209,7 +207,11 @@
     return $assignment_info;
   }
   
-  
+  /*
+   * drop_leading_zero returns the passed-in $day as is, unless $day is
+   * a single digit number written with a leading-zero (e.g., '01').  In that
+   * case, the leading-zero is dropped (e.g., '1' is returned).
+   */
   function drop_leading_zero($day) {
     switch ($day) {
       case '01':

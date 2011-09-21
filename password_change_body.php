@@ -14,8 +14,7 @@
     } else {
       $query = "SELECT * FROM oneroom_users
               WHERE id = '$user_id' AND password= SHA('$old_pwd')";
-      $result = mysqli_query($dbc, $query)
-        or die('Error querying database: ' . mysqli_error($dbc));
+      $result = mysqli_query($dbc, $query) or redirect('500.php');
       if (mysqli_num_rows($result) == 0) {
         $form_errors['old_pwd'] = '<ul><li>Incorrect old password.</li></ul>';
       }
@@ -34,8 +33,7 @@
     if (empty($form_errors)) {
       $query = "UPDATE oneroom_users SET password = SHA('$new_pwd1')
                 WHERE id = '$user_id'";
-      $result = mysqli_query($dbc, $query)
-                  or die('Error querying database: ' . mysqli_error($dbc));
+      $result = mysqli_query($dbc, $query) or redirect('500.php');
     
       // Redirect to success page
       redirect('acct_change_success.php');

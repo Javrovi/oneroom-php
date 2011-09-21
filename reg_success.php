@@ -1,4 +1,8 @@
 <?php
+  /* reg_success.php
+   * ------------
+   * reg_success.php lets the user know that she has successfullty registered.
+   */
   // Initialize page
   require_once('init_page.php');
 

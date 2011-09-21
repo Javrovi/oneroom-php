@@ -1,4 +1,13 @@
 <?php
+  /* course_edit.php
+   * ---------------
+   * course_edit.php is run when a teacher indicates that she wants to edit a
+   * course.  A course edit form is presented, the form fields filled in
+   * with the current course information.  Successful form submission updates
+   * the course in the database, and the teacher is redirected to
+   * course_edit_success.php.
+   */
+  
   // Initialize page
   require_once('init_page.php');
 
