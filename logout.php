@@ -22,5 +22,5 @@
   }
 
   // Redirect to the home page
-  redirect('index.php');
+  redirect('home.php');
 ?>

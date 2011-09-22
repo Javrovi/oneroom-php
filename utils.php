@@ -31,6 +31,9 @@
                     dirname($_SERVER['PHP_SELF']) . '/' .
                     $script_name;
     header('Location: ' . $redirect_url);
+    //
+    //echo "<META HTTP-EQUIV=\"Refresh\" Content=\"0; URL=$script_name\">";    
+    //exit;  
   }
   
   

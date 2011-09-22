@@ -28,12 +28,12 @@
       <div id="nav">
         <div id="app_name">
           <p>
-            <a href="index.php">OneRoom</a>
+            <a href="home.php">OneRoom</a>
           </p>
         </div>
         
         <div id="course_nav">
-          <a href="index.php">home</a> |
+          <a href="home.php">home</a> |
           <?php if ($logged_in) { ?>
             <a href="allcourses.php">all courses</a> |
             <a href="usercourses.php">my courses</a> |
@@ -41,31 +41,3 @@
           <?php } ?>
         </div>
       </div>
-      
-      <!-- Main content -->
-      <div id="content">
-        <!-- Content heading -->
-        <div id="content-heading">
-          <?php require_once($content_heading); ?>
-        </div>
-        
-        <!-- Content body -->
-        <div id="content-body">
-          <?php
-            require_once($content_body);
-          ?>
-        </div>
-      </div>
-      
-    </div>
-    
-    <div id="footer">
-      <p>
-        <a href="about.html">About</a> |
-        <a href="help.html">Help</a> |
-        &copy; 2011 Yiping Liao
-      </p>
-    </div>
-
-  </body>
-</html>
