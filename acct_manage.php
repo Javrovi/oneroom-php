@@ -6,22 +6,43 @@
    * her email address or to change her password.
    */
 
-  // Initialize page
+  // PHP initialization (utility functions, session start, etc.)
   require_once('init_page.php');
- 
+
+  // Permissions: only logged-in users can manage their accounts
+  if (!$logged_in) {
+    redirect('nopermissions.php');
+  }
+  
   // Set page title
   $page_title = 'Account Management';
   
-  // Set main content heading file
-  $content_heading = 'acct_manage_heading.php';
+  // Display header
+  require_once('oneroom_header.php');
+?>
+
+<!-- Content -->
+<div id="content">
+  <!-- Content heading -->
+  <div id="content-heading">
+    <h1>Manage Your Account</h1>
+  </div>
+        
+  <!-- Content body -->
+  <div id="content-body">
+    <p>
+      <a href="email_change.php">Change Email</a> |
+      <a href="password_change.php">Change Password</a>
+    </p>
+  </div>
+</div>
+
+<?php
+  // Display footer
+  require_once('oneroom_footer.php');
   
-  // Set main content body file
-  $content_body = 'acct_manage_body.php';
-  
-  // Render with 'base.php' template
-  require_once('base.php');
-  
-  // Close page
+  // PHP end-script (close MySQL connection)
   require_once('close_page.php');
 ?>
+
 

@@ -21,7 +21,7 @@
   $logged_in = isset($_SESSION['user_id']);
   if ($logged_in) {
     $user_id = $_SESSION['user_id'];
-    $username = $_SESSION['user_name'];
+    $username = $_SESSION['username'];
     $is_teacher = is_teacher($dbc, $user_id);
   }
 ?>

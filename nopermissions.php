@@ -5,22 +5,35 @@
    * tries to access a page she has no permission to access.
    */
   
-  // Initialize page
+  // PHP initialization (utility functions, session start, etc.)
   require_once('init_page.php');
 
   // Set page title
   $page_title = 'Access Denied';
   
-  // Set main content heading file
-  $content_heading = 'nopermissions_heading.php';
-  
-  // Set main content body file
-  $content_body = 'nopermissions_body.php';
-  
-  // Render with 'base.php' template
-  require_once('base.php');
-  
-  // Close page
-  require_once('close_page.php');
+  // Display header
+  require_once('oneroom_header.php');
 ?>
 
+<!-- Content -->
+<div id="content">
+  <!-- Content heading -->
+  <div id="content-heading">
+    <h1>Access Denied</h1>
+  </div>
+        
+  <!-- Content body -->
+  <div id="content-body">
+    <p>
+      You do not have permission to access this page.
+    </p>
+  </div>
+</div>
+
+<?php
+  // Display footer
+  require_once('oneroom_footer.php');
+  
+  // PHP end-script (close MySQL connection)
+  require_once('close_page.php');
+?>

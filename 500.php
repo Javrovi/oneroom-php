@@ -6,22 +6,36 @@
    * server error, and is provided with a link back to OneRoom's home page.
    */
   
-  // Initialize page
+  // PHP initialization (utility functions, session start, etc.)
   require_once('init_page.php');
 
   // Set page title
   $page_title = 'Server Error';
   
-  // Set main content heading file
-  $content_heading = '500_heading.php';
-  
-  // Set main content body file
-  $content_body = '500_body.php';
-  
-  // Render with 'base.php' template
-  require_once('base.php');
-  
-  // Close page
-  require_once('close_page.php');
+  // Display header
+  require_once('oneroom_header.php');
 ?>
 
+<!-- Content -->
+<div id="content">
+  <!-- Content heading -->
+  <div id="content-heading">
+    <h1>Server Error</h1>
+  </div>
+        
+  <!-- Content body -->
+  <div id="content-body">
+    <p>
+      The server has encountered an error while trying to fulfill your request.
+      Please click <a href="home.php">here</a> to go back to OneRoom's home.
+  </p>
+  </div>
+</div>
+
+<?php
+  // Display footer
+  require_once('oneroom_footer.php');
+  
+  // PHP end-script (close MySQL connection)
+  require_once('close_page.php');
+?>
