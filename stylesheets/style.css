@@ -248,6 +248,10 @@ body > #main { height: auto; min-height: 95%; }
   color: #0B486B;
 }
 
+#footer a:hover {
+  color: #F38630;
+}
+
 /* forms */
 form label {
   float: left;
@@ -268,5 +272,5 @@ form label {
 /* DEBUG */
 #debug {
   /* uncomment the following line to not display debug text */
-  display : none;
+  /* display : none;*/
 }

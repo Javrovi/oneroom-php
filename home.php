@@ -39,7 +39,12 @@
         Welcome anonymous user!
         You need to <a href="login.php">login</a> before you can access your
         courses. (New users: please click <a href="register.php">here</a>
-        to register)
+        to register) 
+      </p>
+      <br />
+      <p>
+        First time visitor? Please read the <a href="about.php">About</a> and 
+        <a href="help.php">Help</a> pages to get started.
       </p>
     <?php } ?>
   </div>
