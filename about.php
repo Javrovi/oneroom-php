@@ -77,7 +77,7 @@
     <h3>Where is the code for OneRoom?</h3>
     <p>
       Click <a href="http://github.com/yipingliao/oneroom-php">here</a> to go to
-      OneRoom (PHP)'s respository on github.
+      OneRoom (PHP)'s repository on github.
     </p>
   </div>
 </div>
