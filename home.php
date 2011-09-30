@@ -17,6 +17,7 @@
 
 <!-- Content -->
 <div id="content">
+  <img src="img/student.jpg" alt="student" height="180" width="640" />
   <!-- Content heading -->
   <div id="content-heading">
     <h1>
